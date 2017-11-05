@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "start": "webpack-dev-server --open"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --progress --profile",
+    "testing": "cross-env NODE_ENV=testing webpack --progress --display-error-details --profile",
+    "build": "cross-env NODE_ENV=production webpack --progress --display-error-details --profile"
   },
   "keywords": [],
   "author": "",
@@ -33,10 +33,16 @@
     "less-loader": "^4.0.5",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.7.1"
+    "webpack-dev-server": "^2.7.1",
+    "webpack-merge": "^4.1.1",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "cross-env": "^5.0.1",
+    "rimraf": "^2.6.1",
+    "underscore-template-loader": "^0.8.0",
+    "url-loader": "^0.5.9"
   },
   "dependencies": {
-    "extract-text-webpack-plugin": "^3.0.2",
+    "normalize.css": "^7.0.0",
     "postcss-loader": "^2.0.8",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -44,5 +50,9 @@
     "react-router-dom": "^4.2.2",
     "sortablejs": "^1.6.1",
     "whatwg-fetch": "^2.0.3"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }
