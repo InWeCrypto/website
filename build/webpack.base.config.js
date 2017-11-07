@@ -13,7 +13,7 @@ config.entries.forEach(function (entry) {
 // 必须是所有页面都使用到的第三方库
 // 可配合插件 ProvidePlugin 省去依赖声明
 entries.vendor = [
-  //'normalize.css'
+  'normalize.css'
 ];
 
 function resolve (dir) {

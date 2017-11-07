@@ -1,5 +1,7 @@
 import React from 'react'
 import HomeContentHeader from '../home-content-header/index'
+import HomeContentList from '../home-content-list/index'
+
 
 import './index.less'
 export default class HomeContent extends React.Component {
@@ -7,6 +9,7 @@ export default class HomeContent extends React.Component {
     return (
       <div className="pc-home-content">
        <HomeContentHeader />
+       <HomeContentList />
       </div>
     )
   }
