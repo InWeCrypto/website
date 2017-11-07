@@ -1,0 +1,36 @@
+/* 项目公共样式 */
+
+@import 'base.less';
+
+body, img, h1,h2,h3,h4,h5,h6, ul, li, p, button, input {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #ccc;
+  /* background: url('..//img/webpack.png') top/100% no-repeat; */
+}
+
+ul {
+  list-style: none;
+}
+
+input, button {
+  border: none;
+  outline: none;
+}
+nav {
+  /* 测试 autoprefixer */
+  transition: transform 1s;
+}
+
+nav.active {
+  /* 测试 autoprefixer */
+  transform: translate(30px);
+}
+
+nav a {
+  margin-right: 20px;
+  color: #7265e6;
+}

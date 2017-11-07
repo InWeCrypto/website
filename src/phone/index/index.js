@@ -9,7 +9,7 @@ export default class Home extends React.Component {
     const history = createBrowserHistory();
     return (
       <div>
-        <h1>Home page</h1>
+        <h1>Home page-----------Phone</h1>
         <a href="../page-a/index.html">pagea</a><br/>
         <a href="../page-c/index.html">pagec</a><br/>
         <a href="../page-d/index.html">paged</a><br/>

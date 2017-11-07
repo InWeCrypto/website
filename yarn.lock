@@ -3019,6 +3019,10 @@ nan@^2.3.0:
   version "2.7.0"
   resolved "http://registry.npm.taobao.org/nan/download/nan-2.7.0.tgz#d95bf721ec877e08db276ed3fc6eb78f9083ad46"
 
+navigator@^1.0.1:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/navigator/download/navigator-1.0.1.tgz#ba69c1929a39a9b50eb7e9f5c11178789caf790f"
+
 ncname@1.0.x:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/ncname/download/ncname-1.0.0.tgz#5b57ad18b1ca092864ef62b0b1ed8194f383b71c"

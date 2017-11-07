@@ -1,19 +1,18 @@
-import app from 'app/js/app.js'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-export default class PageD extends React.Component {
+export default class PageA extends React.Component {
   render() {
     return (
       <div>
-        <h1>Page---------DDDDD--------</h1>
+        <h1>Phone---------Page---------AAAAAAAAAAAAAAAaa--------</h1>
       </div>
     )
   }
 }
 
 ReactDOM.render(
-  <PageD />,
+  <PageA />,
   document.getElementById('root')
 )
 

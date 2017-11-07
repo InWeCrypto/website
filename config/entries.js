@@ -1,8 +1,14 @@
 var path = require('path');
 var fs = require('fs');
+var phone = require('./device');
+var dirSrc;
 
-var dirSrc = path.resolve(__dirname, '../src')
-
+// 手机和PC分开
+if(phone !== null) {
+  dirSrc = path.resolve(__dirname, '../src/phone')
+}else {
+  dirSrc = path.resolve(__dirname, '../src/pc')
+}
 // 单独处理项目首页
 // 因为它的结构与其它页面不同
 var entriesConfig = [

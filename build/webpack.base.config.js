@@ -13,7 +13,7 @@ config.entries.forEach(function (entry) {
 // 必须是所有页面都使用到的第三方库
 // 可配合插件 ProvidePlugin 省去依赖声明
 entries.vendor = [
-  'normalize.css'
+  //'normalize.css'
 ];
 
 function resolve (dir) {
@@ -37,7 +37,7 @@ var webpackConfig = {
         }
       },
       {
-        test: /\.(css|less)$/,
+        test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
@@ -48,16 +48,13 @@ var webpackConfig = {
                 importLoaders: 1
               },
             },
-            {
-              loader: 'less-loader',
-              options: {
-                minimize: process.env.NODE_ENV === 'production',
-                niIeCompat: true
-              },
-            },
             'postcss-loader'
           ]
         })
+      },
+      {
+        test: /\.less$/,
+        use: ['style-loader', 'css-loader', 'less-loader']
       },
       {
         test: /\.js$/,
