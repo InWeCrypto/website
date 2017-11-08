@@ -3,6 +3,9 @@ import Slider from 'react-slick'
 import "babel-polyfill"
 import home_slider_default from '../../lib/app/img/home_slider_pic_default.png'
 import { PORTOCAL } from '../../lib/app/js/env'
+import HomeHeaderDynamicNews from '../home-header-dynamic-news/index'
+
+
 import './index.less'
 
 export default class HomeHeaderSlideShow extends React.Component {
@@ -20,15 +23,18 @@ export default class HomeHeaderSlideShow extends React.Component {
      let { imgData }  = this.props
 
     return (
-      <div className="pc-home-header-slide-show">
-        <Slider {...settings}>
-          {
-            imgData !== null ? imgData.data.list.map((img) => {
-              return <div key={img.id}><img src={`${PORTOCAL}/${img.img}`} className="slide-page" /></div>
-            })
-            : null
-          }
-        </Slider>
+      <div>
+        <div className="pc-home-header-slide-show">
+          <Slider {...settings}>
+            {
+              imgData !== null ? imgData.data.list.map((img) => {
+                return <div key={img.id}><img src={`${PORTOCAL}/${img.img}`} className="slide-page" /></div>
+              })
+              : null
+            }
+          </Slider>
+          <HomeHeaderDynamicNews />
+        </div>
       </div>
     )
   }

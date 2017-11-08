@@ -1,3 +1,3 @@
 
 
-export const PORTOCAL = 'http://inwecryptocms.app/'
+export const PORTOCAL = 'http://inwecryptocms.app'

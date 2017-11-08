@@ -8,8 +8,8 @@ export default class HomeHeaderLoginSearch extends React.Component {
   render() {
     return (
       <div className="pc-home-header-login-search">
-        <HomeHeaderLogin />
         <HomeHeaderSearchBox />
+        <HomeHeaderLogin />
       </div>
     )
   }
