@@ -15,11 +15,10 @@ export default class HomeContent extends React.Component {
     };
   }
   render() {
-    console.log(this.state.project)
     return (
       <div className="pc-home-content">
        <HomeContentHeader />
-       <HomeContentList />
+       <HomeContentList project={this.state.project} />
       </div>
     )
   }
