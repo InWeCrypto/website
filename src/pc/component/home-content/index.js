@@ -1,5 +1,5 @@
 import React from 'react'
-import { getDate } from '../../lib/app/js/app'
+import { getData } from '../../lib/app/js/app'
 import { PORTOCAL } from '../../lib/app/js/env'
 
 import HomeContentHeader from '../home-content-header/index'
@@ -23,7 +23,7 @@ export default class HomeContent extends React.Component {
     )
   }
   async componentDidMount(){
-    let data =  await getDate(`${PORTOCAL}/home/project`)
+    let data =  await getData(`${PORTOCAL}/home/project`)
      this.setState ({
        project: data
      })

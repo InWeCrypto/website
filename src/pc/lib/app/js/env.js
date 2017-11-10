@@ -1,3 +1,3 @@
 
 
-export const PORTOCAL = 'https://dev.inwecrypto.com'
+export const PORTOCAL = 'http://inwecryptocms.app'

@@ -2,7 +2,7 @@ import React from 'react'
 import HomeHeaderTop from '../home-header-top/index'
 import HOmeHeaderNav from '../home-header-nav/index'
 import HomeHeaderSlideShow from '../home-header-slideshow/index'
-import { getDate } from '../../lib/app/js/app'
+import { getData } from '../../lib/app/js/app'
 import { PORTOCAL } from '../../lib/app/js/env'
 export default class HomeHeader extends React.Component {
   // static defaultProps = {
@@ -22,13 +22,12 @@ export default class HomeHeader extends React.Component {
         <HomeHeaderSlideShow imgData = {this.state.imgData}/>
       </div>
     )
-    
   }
   async componentDidMount(){
-      let imgs =  await getDate(`${PORTOCAL}/home/ad`)
-       this.setState ({
-         imgData: imgs
-       })
+    let imgs =  await getData(`${PORTOCAL}/home/ad`)
+      this.setState ({
+        imgData: imgs
+      })
   }
 }
 

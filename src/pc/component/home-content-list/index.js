@@ -16,7 +16,6 @@ export default class HomeContentList extends React.Component {
     }
   }
   componentDidMount() {
-    console.log(this.refs.list)
     var el = this.refs.list
     var sortable = Sortable.create(el, {
       draggable: '.pc-home-content-list-item',
@@ -32,7 +31,6 @@ export default class HomeContentList extends React.Component {
         })
       })
       this.size(arr)
-      console.log(arr)
     }
     return (
      <div ref="list" className="pc-home-content-list">

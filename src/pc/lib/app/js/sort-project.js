@@ -35,6 +35,14 @@ function find(data) {
      }
 }
   //  将数据添加到arr后，清空need对应得grid_type
+  // 如果前两个盒子是type1,那么第三个盒子不能是type2(竖方块)
+  if(cur.data.grid_type === 1 && cur.arr[1] && cur.arr[1][0].grid_type === 1 && data.grid_type === 2) {
+    if(cur.next === null) {
+      return this.insert(cur, data)
+    }else {
+      cur = cur.next
+    }
+  }
    let size = cur.size;
    let num = data.grid_type === 3 ? 2 : data.grid_type;
    let total = size + num;

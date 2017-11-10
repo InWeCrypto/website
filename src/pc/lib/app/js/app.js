@@ -1,7 +1,7 @@
 // 项目公共逻辑和方法
 
 // eg: url = 'http://inwecryptocms.app/ad'
-export function getDate(url) {
+export function getData(url) {
    return new Promise((resolve, reject) => {
      fetch(url).then(res => {
        var resD = res.json()
@@ -12,7 +12,7 @@ export function getDate(url) {
            }
        }
    ).catch (e => {
-     alert('Error');
+     console.log('check your url/network')
    })
  })
  }
