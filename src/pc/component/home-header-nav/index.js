@@ -7,16 +7,24 @@ import HomeHeaderLoginSearch from '../home-header-login-search/index'
 import './index.less'
 
 export default class HomeHeaderNav extends React.Component {
+  
   render() {
+    let {classIco, classPrice, classBrowser, classInfo } = this.props    
     return (
       <div className="pc-home-header-nav">
         <div className="pc-home-header-nav-content">
           <div className="home-logo">
-            <img className="home-logo-pic" src={home_logo} />
+            <a className="home-logo-pic" href="../../../index.html">
+              <img src={home_logo} />
+            </a>
           </div>
-          <HomeHeaderNavList />
+          <HomeHeaderNavList 
+            classIco = {classIco} 
+            classPrice = {classPrice} 
+            classBrowser = {classBrowser} 
+            classInfo = {classInfo}
+          />
           <HomeHeaderLoginSearch />
-          
         </div>
       </div>
     )

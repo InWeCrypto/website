@@ -10,7 +10,7 @@ export default class HomeHeaderTopTimeNew extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      info: null,
+      info: null
     }
   }
   componentWillReceiveProps(nextProps) {
@@ -33,11 +33,10 @@ export default class HomeHeaderTopTimeNew extends React.Component {
     let ele_copy = this.refs.list_copy
     let ele_box = this.refs.box
     this.timer =  setInterval(function() {
-        console.log(12)
         if(ele_copy.offsetTop - ele_box.scrollTop <= 0) {
           ele_box.scrollTop = 0
         }else {
-          ele_box.scrollTop = this.refs.box.scrollTop + 10 
+          ele_box.scrollTop = this.refs.box.scrollTop + 25
         }
       }.bind(this),1000)
    }

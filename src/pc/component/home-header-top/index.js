@@ -10,7 +10,7 @@ export default class HomeHeaderTop extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      priceData : ''
+      priceData : null
     }
   }
   render() {
