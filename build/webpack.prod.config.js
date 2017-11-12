@@ -25,6 +25,9 @@ var webpackConfig = {
     })
   ],
   devtool: 'source-map',
+  externals: {
+    jquery: 'jQuery'
+  }
 };
 
 if (process.env.NODE_ENV === 'production') {

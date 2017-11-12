@@ -1,4 +1,5 @@
 import React from 'react'
+import $ from 'jquery'
 import timeNew from '../../lib/app/img/home_time_new.png'
 import { getData } from '../../lib/app/js/app'
 import { PORTOCAL } from '../../lib/app/js/env'
@@ -14,9 +15,6 @@ export default class HomeHeaderTopTimeNew extends React.Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    let ele = this.refs.list
-    let ele_copy = this.refs.list_copy
-    let ele_box = this.refs.box
     if(nextProps.priceData === this.props.priceData) return
     let arr = [];
     nextProps.priceData.data.map(
@@ -29,17 +27,29 @@ export default class HomeHeaderTopTimeNew extends React.Component {
     })
   }
   componentDidMount() {
-    let ele = this.refs.list
-    let ele_copy = this.refs.list_copy
-    let ele_box = this.refs.box
-    this.timer =  setInterval(function() {
-        if(ele_copy.offsetTop - ele_box.scrollTop <= 0) {
-          ele_box.scrollTop = 0
-        }else {
-          ele_box.scrollTop = this.refs.box.scrollTop + 25
-        }
-      }.bind(this),1000)
-   }
+    let $ul = $('.new-content')
+    var timer = null;
+    timer = setInterval(function() {
+        scrollList($ul);
+    },
+    1000);
+
+    function scrollList(obj) {
+        var scrollHeight = $(".new-content li:first").height();
+        $ul.stop().animate({
+            marginTop: -scrollHeight
+        },
+        600,
+        function() {
+            $ul.css({
+                marginTop: 0
+            }).find("li:first").appendTo($ul);
+        });
+      }
+    }
+
+
+   
   componentWillUnmount() {
     this.timer && clearInterval(this.timer)
   }
@@ -47,27 +57,21 @@ export default class HomeHeaderTopTimeNew extends React.Component {
   render() {
     let { priceData } = this.props
     let { info } = this.state
-    let ele = this.refs.list
-    let ele_box = this.refs.box
-    if(ele && ele.innerHTML) {
-      this.refs.list_copy.innerHTML = ele.innerHTML
-    }
     return (
       <div className="pc-home-header-top-time-new">
         <div  className="new-pic">
           <img src={timeNew} />
         </div>
         <div ref="box" className="new-content-box" >
-        <div ref="list" className="new-content" >
+        <ul ref="list" className="new-content" >
           {
             info && info.map(item => {
-                return <div className="new-content-text" key={item.id.toString()} >
+                return <li className="new-content-text" key={item.id.toString()} >
                   {item.symbol} 实时价格 ${item.price_usd}
-                </div>                
+                </li>                
             })
           } 
-          </div>         
-          <div ref="list_copy" className="new-content-copy"></div>
+          </ul>         
         </div>
       </div>
     )
