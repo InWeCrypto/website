@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import CommonHeader from '../component/common-header/index'
+import CommonHeader from '../common-component/common-header/index'
 // import AllInfoHomePage from '../component/all-info-home-page/index'
 // import AllInfoDetail from '../component/all-info-detail/index'
 

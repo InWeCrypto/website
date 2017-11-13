@@ -1,9 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import CommonHeader from '../component/common-header/index'
-import AllInfoHomePage from '../component/all-info-home-page/index'
-import AllInfoDetail from '../component/all-info-detail/index'
+import CommonHeader from '../common-component/common-header/index'
+import AllInfoDetail from '../common-component/all-info-detail/index'
 
 import img_col from '../lib/app/img/all-info-detail-page_icon_like.png'
 import img_no_col from '../lib/app/img/all-info-detail-page_icon_unlike.png'

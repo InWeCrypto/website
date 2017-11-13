@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom'
 import {Router, Link, Route, hashHistory } from 'react-router-dom'
 import createBrowserHistory from 'history/createBrowserHistory';
 
-import CommonHeader from '../component/common-header/index'
-import AllInfoHomePage from '../component/all-info-home-page/index'
-import ParticularOnlineMain from '../component/particular-online-main/index'
+import CommonHeader from '../common-component/common-header/index'
+import ParticularOnlineMain from './component/particular-online-main/index'
 
 import './index.less'
 
