@@ -11,7 +11,6 @@ export default class Menu extends Component{
 
     render(){
         return(
-        
             <div className='menu-box'>
                 <NavLink to='/recharge' className='menu-item' activeClassName='act'>充值缴费</NavLink>
                 <NavLink to='/collect' className='menu-item' activeClassName='act'>个人收藏</NavLink>
