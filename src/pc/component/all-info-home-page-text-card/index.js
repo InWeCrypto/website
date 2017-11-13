@@ -16,7 +16,7 @@ export default class AllInfoHomePageTextCard extends React.Component {
         <div className="content">
           <h2>快讯 : {title}</h2>
           <AllInfoDetail 
-            className="detail"
+            className="add-detail"
             img_col = {img_col}
             img_no_col ={img_no_col}
             date = {date} 

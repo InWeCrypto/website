@@ -13,15 +13,7 @@ export default class AllInfoText extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      allInfo: [{
-        id:1,
-        content: '历史的时刻手里的看法开始手里的看法试试看电视了实力肯定疯了似的开发的吗我',
-        title: '快讯',
-        updated_at: '2017-3-23 09:12:00',
-        click_rate: 12,
-        comments_count: 22,
-        save_user: true
-      }],
+      allInfo: null
     }
   } 
   render() {
