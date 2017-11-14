@@ -5,6 +5,7 @@ import createBrowserHistory from 'history/createBrowserHistory';
 
 import CommonHeader from '../common-component/common-header/index'
 import ParticularOnlineMain from './component/particular-online-main/index'
+import ParticularSideBar from '../common-component/particular-sidebar/index'
 
 import './index.less'
 
@@ -15,7 +16,10 @@ export default class ParticularOnline extends React.Component {
      <div className="pc-particular-online">
         <CommonHeader classInfo = "nav-item-active" />
         <div className="page-wrap">
-          <ParticularOnlineMain />
+          <div className="content">
+            <ParticularOnlineMain />
+            <ParticularSideBar />
+          </div>
         </div>
       </div>
     )

@@ -23,3 +23,16 @@ export const getData = (url) => {
     return typeof c === 'string'
    }).join(" ")
  }
+
+ //卡片切换
+ export const switchCard = (active, e) => {
+  let parent = e.target.parentNode;
+  let children = parent.children;
+  for(let key in children){
+    if(children[key].className){
+      children[key].className = children[key].className.replace(` ${active}`, '')
+    }
+  }
+  e.target.className += ` ${active}`
+  
+ }

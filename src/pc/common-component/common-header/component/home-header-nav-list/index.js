@@ -14,7 +14,6 @@ export default class HomeHeaderNavList extends React.Component {
     let parent = e.target.parentNode;
     let children = parent.children;
     for(let key in children){
-      console.log(children[key].className)
       if(children[key].className){
         children[key].className = children[key].className.replace(' nav-item-active', '')
       }
@@ -22,7 +21,6 @@ export default class HomeHeaderNavList extends React.Component {
     e.target.className += " nav-item-active"
   }
   changeLanuage = () => {
-    console.log('alsd')
     let _show = this.state.show
     this.setState({
       show: !_show
