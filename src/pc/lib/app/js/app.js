@@ -1,9 +1,21 @@
 // 项目公共逻辑和方法
 
 // eg: url = 'http://inwecryptocms.app/ad'
-export const getData = (url) => {
+export const getData = function(url,method,param,header){
+  var p={};
+  var h={};
+  if(arguments[1]&&typeof(arguments[1])==='string'){
+     p.method=arguments[1];
+     if(arguments[3]&&typeof(arguments[3]==='object')){
+       h=header;
+     }
+     p.headers=Object.assign({},{
+       'Content-Type': 'application/json'
+     },h);
+     p.body=JSON.stringify(param);
+  }
    return new Promise((resolve, reject) => {
-     fetch(url).then(res => {
+     fetch(url,p).then(res => {
        var resD = res.json()
            if (res.ok) {
              resolve(resD)

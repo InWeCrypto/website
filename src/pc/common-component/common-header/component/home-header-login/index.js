@@ -10,7 +10,7 @@ export default class HomeHeaderLogin extends React.Component {
       loginType:'signin',
       isShowSign:false
     }
-  }  
+  }   
   changeSignState(state=false,type='signin'){
     this.setState({
       isShowSign:state,
