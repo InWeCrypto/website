@@ -15,7 +15,7 @@ export default class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
+      phone: "",
       password: ""
     };
   }
@@ -23,14 +23,14 @@ export default class SignIn extends Component {
     this.props.changeState(true, type);
   }
   signinClick() {
-    let email = this.state.email;
+    let phone = this.state.phone;
     let password = this.state.password;
-    if (!this.verifyEmail(email)) {
+    if (!this.verifyphone(phone)) {
       alert("邮箱格式错误");
       return;
     }
     getData(`${PORTOCAL}/user/login`, "POST", {
-      email: email,
+      phone: phone,
       password: password
     }).then(data => {
       console.log(data);
@@ -41,9 +41,9 @@ export default class SignIn extends Component {
       [type]: e.target.value
     });
   }
-  verifyEmail(email) {
+  verifyphone(phone) {
     let reg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
-    return reg.test(email);
+    return reg.test(phone);
   }
   render() {
     return (
@@ -54,10 +54,10 @@ export default class SignIn extends Component {
           </div>
           <div className="input-box">
             <input
-              value={this.state.email}
-              onChange={this.inputChange.bind(this, "email")}
+              value={this.state.phone}
+              onChange={this.inputChange.bind(this, "phone")}
               className="input"
-              placeholder="请输入你的邮箱"
+              placeholder="请输入你的手机号码"
               type="text"
             />
           </div>
@@ -81,23 +81,21 @@ export default class SignIn extends Component {
             登录
           </button>
         </div>
-        <div className="sign-item">
-          <div className="more-box">
-            <a
-              className="a right"
-              href="javascript:void(0)"
-              onClick={this.goView.bind(this, "signup")}
-            >
-              注册
-            </a>
-            <a
-              className="a left"
-              href="javascript:void(0)"
-              onClick={this.goView.bind(this, "forget")}
-            >
-              忘记密码？
-            </a>
-          </div>
+        <div className="more-box">
+          <a
+            className="a right"
+            href="javascript:void(0)"
+            onClick={this.goView.bind(this, "signup")}
+          >
+            注册
+          </a>
+          <a
+            className="a left"
+            href="javascript:void(0)"
+            onClick={this.goView.bind(this, "forget")}
+          >
+            忘记密码？
+          </a>
         </div>
       </div>
     );

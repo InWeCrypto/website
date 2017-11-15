@@ -1,120 +1,125 @@
-.sign-box{
-    position: fixed;
-    left:0;
-    top:0;
+.sign-box {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  .sign-bg {
+    width: 100%;
+    height: 100%;
+  }
+  .sign-container {
+    position: absolute;
+    left: 50%;
+    width: 400px;
+    margin-left: -200px;
+    top: 50%;
+    margin-top: -220px;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .sign-title {
+    position: relative;
+    height: 44px;
+    background: #1b252f;
+    color: #fff;
+    text-align: center;
+    line-height: 44px;
+    font-size: 16px;
+    .sign-close {
+      cursor: pointer;
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: 10px;
+      top: 50%;
+      margin-top: -17px;
+      width: 14px;
+      height: 14px;
+    }
+  }
+  .sign-content {
+    box-sizing: border-box;
+    padding: 20px 20px;
+    text-align: center;
+  }
+  .sign-item {
+    margin: 10px 0;
+  }
+  .icon-box {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
+    background: #e3e8ee;
+    margin-right: 6px;
+    img {
+      vertical-align: middle;
+    }
+  }
+  .input-box {
+    width: 258px;
+    height: 40px;
+    background: #e3e8ee;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+  }
+  .input {
+    width: 100%;
+    outline: none;
+    box-sizing: border-box;
+    padding: 0 20px;
+    height: 100%;
+    background: #e3e8ee;
+  }
+  .sign-btn {
+    width: 304px;
+    height: 40px;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    line-height: 40px;
+    background: #ea642f;
+    cursor: pointer;
+  }
+  .sign-btn.sign-btngrey {
+    background: grey;
+  }
+  .return {
+    color: #707070;
+    cursor: pointer;
+  }
+}
+.sign-item.code {
+  .input {
+    padding-right: 80px;
+  }
+  .sign-btn {
+    width: 80px;
+    position: absolute;
     right: 0;
-    bottom:0;
-    z-index: 10;
-    .sign-bg{
-        width:100%;
-        height: 100%;
-    }
-    .sign-container{
-        position: absolute;
-        left:50%;
-        width:550px;
-        margin-left:-275px;
-        top:20%;
-        background: #fff;
-        border-radius: 4px;
-        overflow: hidden;
-    }
-    .sign-title{
-        position: relative;
-        height: 74px;
-        background: #1B252F;
-        color:#fff;
-        text-align: center;
-        line-height: 74px;
-        font-size: 20px;
-        .sign-close{
-            cursor: pointer;
-            position: absolute;
-            right: 0;
-            top:0;
-            padding: 20px;
-            top:50%;
-            margin-top:-29px;
-        }
-    }
-    .sign-content{
-        box-sizing: border-box;
-        padding: 50px 120px;
-        text-align: center;
-    }
-    .sign-item{
-        margin:10px 0;
-    }
-    .icon-box{
-        width: 40px;
-        height: 40px;
-        line-height: 40px;
-        vertical-align: middle;
-        display: inline-block;
-        text-align: center;
-        background: #E3E8EE;
-        margin-right: 6px;
-        img{
-            vertical-align: middle;
-        }
-    }
-    .input-box{
-        width:258px;
-        height: 40px;
-        background: #E3E8EE;
-        display: inline-block;
-        vertical-align: middle;
-        position: relative;
-    }
-    .input{
-        width: 100%;
-        outline:none;
-        box-sizing: border-box;
-        padding:0 20px;
-        height: 100%;
-        background: #E3E8EE;
-    }
-    .sign-btn{
-        width:304px;
-        height: 40px;
-        color:#fff;
-        text-align: center;
-        display: inline-block;
-        line-height: 40px;
-        background: #EA642F;
-        cursor: pointer;
-    }
-    .return{
-        color:#707070;
-    }
+    top: 0;
+  }
 }
-.sign-item.code{
-    .input{
-        padding-right:80px;
-    }
-    .sign-btn{
-        width:80px;
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
+.sign-item.tl {
+  text-align: left;
+  .return {
+    cursor: pointer;
+  }
 }
-.sign-item.tl{
-    text-align: left;
-    .return{
-        cursor: pointer;
-    }
+.more-box {
+  width: 304px;
+  text-align: left;
+  display: inline-block;
+  .right {
+    float: right;
+  }
+  .a {
+    color: #333;
+  }
 }
-.more-box{
-    padding:20px 0 0 0;
-    width:304px;
-    height: 20px;
-    text-align: left;
-    .right{
-        float: right;
-    }
-    .a{
-        color:#333;
-    }
-}
-

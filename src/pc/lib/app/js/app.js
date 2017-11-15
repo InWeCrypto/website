@@ -10,7 +10,7 @@ export const getData = function(url, method, param, header) {
       h = header;
     }
     p.headers = Object.assign({}, h);
-    p.body = formatData(param);
+    p.body = JSON.stringify(param);
   }
   return new Promise((resolve, reject) => {
     fetch(url, p)
