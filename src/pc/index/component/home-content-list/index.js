@@ -12,65 +12,97 @@ export default class HomeContentList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      listArr: []
+      listArr: props.project||[]
     }
+    
   }
   componentDidMount() {
-    var el = this.refs.list
-    var sortable = Sortable.create(el, {
-      draggable: '.pc-home-content-list-item',
+    
+  }
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      listArr: nextProps.project.data
     })
   }
-  render() {
-    let { project } = this.props
-    if(project){
-      let allData = sortProject(project.data)
-      allData.map((item, i) => {
-        item.map(i => {
-          arr.push(i)
-        })
-      })
-      this.size(arr)
+  componentDidUpdate(){
+    var el = this.refs.list;
+    if(!el){
+      return;
     }
-    return (
-     <div ref="list" className="pc-home-content-list">
-       {
-         arr && arr.map(item => {
-           return  <HomeContentListItem 
-                    key = {item[0].id.toString()}
-                    text = {item[0].id}
-                  // transform = {`translate3d(${item[1].top} ${item[1].left})`}
-                    width = {item[1].width} height = {item[1].height} top = {item[1].top} left = {item[1].left}
-                     >
-                    
-                  </HomeContentListItem>
-         })
-       }
-     </div>
-    )
+    var sortable = Sortable.create(el, {
+      handler:'.group'
+    });
+    [].forEach.call(el.querySelectorAll('.group'), function (el){
+      Sortable.create(el, {
+        group: 'pc-home-content-list-item'
+      });
+    });
+
   }
-  size = (arr) =>{
-    if(!arr) return
-    arr.map(item => {
-      switch(item[0].grid_type){
-        case 1:
-          item[1].width = w
-          item[1].height = w
-          break;
-        case 2:
-          item[1].width = w
-          item[1].height = h
-          break;
-        case 3:
-          item[1].width = h
-          item[1].height = w
-          break;
-        case 4:
-          item[1].width = h
-          item[1].height = h
-          break;
-      }
-    })
+
+  render() {
+    if(this.state.listArr&&this.state.listArr.length>0)
+    {
+      let allData = sortProject(this.state.listArr);
+      return (
+        <div ref="list" className="pc-home-content-list">
+          {
+            allData && allData.map((item1,index) => {
+              console.log(item1)
+              return <div key={index} className='group'>
+                { 
+                  item1.map(item=>{
+                   let style=this.size(item);
+                   console.log(style)
+                   return  <HomeContentListItem 
+                           key = {item[0].id.toString()}
+                           text = {item[0].id}
+                         // transform = {`translate3d(${item[1].top} ${item[1].left})`}
+                         // top = {item[1].top} left = {item[1].left
+                           width = {style.width} 
+                           height = {style.height}
+                           >
+                           
+                         </HomeContentListItem>
+                  })
+                }
+   
+              </div>
+              
+            })
+            
+          }
+        </div>
+       )
+    }else{
+      return(<span></span>); 
+    }
+    
+
+    
+  }
+  size = (item) =>{
+    if(!item) return;
+    var res={};
+    switch(item[0].grid_type){
+      case 1:
+        res.width = w
+        res.height = w
+        break;
+      case 2:
+        res.width = w
+        res.height = h
+        break;
+      case 3:
+        res.width = h
+        res.height = w
+        break;
+      case 4:
+        res.width = h
+        res.height = h
+        break;
+    }
+    return res;
   }
  
 

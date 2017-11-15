@@ -26,7 +26,7 @@ export default class HomeContent extends React.Component {
     let data =  await getData(`${PORTOCAL}/home/project`)
      this.setState ({
        project: data
-     })
+     });
   }
 }
 
