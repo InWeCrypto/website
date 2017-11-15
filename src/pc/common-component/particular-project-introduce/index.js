@@ -40,7 +40,6 @@ export default class ParticularProjectIntroduce extends React.Component {
   }
   render() {
     let { data } = this.props
-  //  console.log(data)
     return (
       <div className="pc-particular-project-introduce">
        <ul className="introduce-title-list">

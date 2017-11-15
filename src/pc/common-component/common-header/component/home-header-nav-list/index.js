@@ -28,20 +28,15 @@ export default class HomeHeaderNavList extends React.Component {
   }
 
   render() {
-    const card = [
-      {text: '行情', href: '../../all-info/index.html'},
-      {text: '浏览器', href: '../../browser/index.html'},
-      {text: '所有资讯', href: '../../all-info/index.html'}
-     ]
 
     let {show} = this.state
     let {classIco, classPrice, classBrowser, classInfo } = this.props
     return (
       <div className="pc-home-header-nav-list">
-        <a className={cls("nav-item", classIco)} onClick={e => this.onClick(e)} href='../../index.html'>Ico评测</a>
-        <a className={cls("nav-item", classPrice)} onClick={e => this.onClick(e)} href='../../price-market/index.html'>行情</a>
-        <a className={cls("nav-item", classBrowser)} onClick={e => this.onClick(e)} href='../../particular-online/index.html'>浏览器</a>
-        <a className={cls("nav-item", classInfo)} onClick={e => this.onClick(e)} href='../../all-info/index.html'>所有资讯</a>
+        <a className={cls("nav-item", classIco)} onClick={e => this.onClick(e)} href='/'>Ico评测</a>
+        <a className={cls("nav-item", classPrice)} onClick={e => this.onClick(e)} href='../../../../price-market'>行情</a>
+        <a className={cls("nav-item", classBrowser)} onClick={e => this.onClick(e)} href='../../particular-online'>浏览器</a>
+        <a className={cls("nav-item", classInfo)} onClick={e => this.onClick(e)} href='../../all-info'>所有资讯</a>
         <div className="nav-item nav-item-language" onClick={this.changeLanuage}>
           <p>语言<span className="dropdown-icon"></span></p>
           <div className="nav-item-language-dropdown" style={{display: show ? 'block': 'none'}} >

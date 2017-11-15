@@ -20,7 +20,6 @@ export default class HomeHeaderSlideShow extends React.Component {
     };
 
      let { imgData }  = this.props
-
     return (
       <div>
         <div className="pc-home-header-slide-show">
