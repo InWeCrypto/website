@@ -9,7 +9,13 @@ export const getData = function(url, method, param, header) {
     if (arguments[3] && typeof (arguments[3] === "object")) {
       h = header;
     }
-    p.headers = Object.assign({}, h);
+    p.headers = Object.assign(
+      {},
+      {
+        "Content-Type": "application/json"
+      },
+      h
+    );
     p.body = JSON.stringify(param);
   }
   return new Promise((resolve, reject) => {
