@@ -90,6 +90,7 @@ export default class Forget extends Component {
         alert(e.toString().replace("Error:", ""));
       });
   }
+
   verifyPhone(phone) {
     let reg = /^1[34578]\d{9}$/;
     return reg.test(phone);
