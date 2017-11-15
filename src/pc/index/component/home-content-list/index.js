@@ -53,7 +53,6 @@ export default class HomeContentList extends React.Component {
                 { 
                   item1.map(item=>{
                    let style=this.size(item);
-                   console.log(style)
                    return  <HomeContentListItem 
                            key = {item[0].id.toString()}
                            text = {item[0].id}
