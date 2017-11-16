@@ -1,5 +1,16 @@
 import React from "react";
 import "./index.less";
+
+const Text = {
+  "2": "轮播",
+  "3": "download",
+  "4": "视频",
+  "5": "已上线",
+  "6": "待上线",
+  "7": "众筹中",
+  "8": "即将众筹"
+};
+
 export default class HomeContentListItem extends React.Component {
   constructor(props) {
     super(props);
@@ -27,7 +38,23 @@ export default class HomeContentListItem extends React.Component {
   };
 
   render() {
-    let { width, height, top, left, text, id } = this.props;
+    let {
+      width,
+      height,
+      top,
+      left,
+      text,
+      id,
+      src,
+      score,
+      descType
+    } = this.props;
+    let link = "";
+    if (descType === 5 || descType === 6) {
+      link = `../../../particular-online?${id}`;
+    } else if (descType === 7 || descType === 8) {
+      link = `../../../particular-fund?${id}`;
+    }
     return (
       <div
         //onMouseOver={this.mouseoverHandler}
@@ -41,8 +68,15 @@ export default class HomeContentListItem extends React.Component {
           transform: `rotateY(${this.state.transY}deg)`
         }}
       >
-        {text}
-        <div className="list-item-back">-----------{text}--------------</div>
+        <a href={link}>
+          <div className="list-item-content">
+            <img src={src} />
+            <div className="item-score">{score}</div>
+            <h2>{name}</h2>
+            <p>{Text[descType]}</p>
+          </div>
+          <div className="list-item-back">-----------{text}--------------</div>
+        </a>
       </div>
     );
   }

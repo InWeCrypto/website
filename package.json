@@ -32,20 +32,22 @@
     "file-loader": "^0.11.2",
     "glob": "^7.1.2",
     "html-webpack-plugin": "^2.30.1",
+    "jquery": "^3.2.1",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
+    "promise-polyfill": "^6.0.2",
     "rimraf": "^2.6.1",
     "style-loader": "^0.18.2",
     "underscore-template-loader": "^0.8.0",
     "url-loader": "^0.5.9",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1",
-    "webpack-merge": "^4.1.1"
+    "webpack-merge": "^4.1.1",
+    "whatwg-fetch": "^2.0.3"
   },
   "dependencies": {
     "dsmorse-gridster": "^0.7.0",
     "echarts": "^3.8.3",
-    "jquery": "^3.2.1",
     "navigator": "^1.0.1",
     "normalize.css": "^7.0.0",
     "postcss-loader": "^2.0.8",
@@ -56,8 +58,7 @@
     "react-router-dom": "^4.2.2",
     "react-slick": "^0.15.4",
     "slick-carousel": "^1.8.1",
-    "sortablejs": "^1.7.0",
-    "whatwg-fetch": "^2.0.3"
+    "sortablejs": "^1.7.0"
   },
   "browserslist": [
     "> 1%",

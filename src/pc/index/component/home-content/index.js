@@ -17,7 +17,9 @@ export default class HomeContent extends React.Component {
     return (
       <div className="pc-home-content">
         <HomeContentHeader />
-        <HomeContentList project={this.state.project} />
+        <div className="content-list-wrap">
+          <HomeContentList project={this.state.project} />
+        </div>
       </div>
     );
   }
