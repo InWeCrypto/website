@@ -19,8 +19,8 @@ export default class SignIn extends Component {
       password: ""
     };
   }
-  goView(type) {
-    this.props.changeState(true, type);
+  goView(type, isOpen = true) {
+    this.props.changeState(isOpen, type);
   }
   signinClick() {
     let phone = this.state.phone;
@@ -34,7 +34,10 @@ export default class SignIn extends Component {
       password: password
     })
       .then(data => {
+        console.log(data);
         if (data.code === 4000) {
+          window.localStorage.setItem("userInfo", JSON.stringify(data.data));
+          this.goView("signin", false);
         } else {
           throw new Error(data.msg);
         }
