@@ -10,6 +10,10 @@ if (!window.Promise) {
 export const getData = function(url, method, param, header) {
   let p = {};
   let h = {};
+  var user = window.localStorage.getItem("userInfo");
+  if (user) {
+    h.Authorization = user.token;
+  }
   if (arguments[1] && typeof arguments[1] === "string") {
     p.method = arguments[1];
     if (arguments[3] && typeof (arguments[3] === "object")) {
