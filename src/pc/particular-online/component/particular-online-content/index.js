@@ -278,20 +278,22 @@ export default class ParticularOnlineContent extends React.Component {
       return;
     }
 
-    getData(
-      `${PORTOCAL}${this.state.currUrl[this.state.curType].current_url}`
-    ).then(data => {
-      if (data.code === 4000) {
-        this.setState({
-          isLoaded: true
-        });
-        this.setState({
-          currentPrice: data.data
-        });
-      } else {
-        throw new Error(data.msg);
-      }
-    });
+    getData(`${PORTOCAL}${this.state.currUrl[this.state.curType].current_url}`)
+      .then(data => {
+        if (data.code === 4000) {
+          this.setState({
+            isLoaded: true
+          });
+          this.setState({
+            currentPrice: data.data
+          });
+        } else {
+          throw new Error(data.msg);
+        }
+      })
+      .catch(e => {
+        alert(e.toString().replace("Error:", ""));
+      });
   }
 
   usdHandler = e => {

@@ -12,22 +12,6 @@ export default class ParticularOnlineCurrentPrice extends Component {
       currentPrice: this.props.currentPrice
     };
   }
-  // getCurData() {
-  //   getData(`${PORTOCAL}` + this.state.currentPrice)
-  //     .then(data => {
-  //       console.log(data);
-  //       if (data.code === 4000) {
-  //       } else {
-  //         throw new Error(data.msg);
-  //       }
-  //     })
-  //     .catch(e => {
-  //       alert(e.toString().replace("Error:", ""));
-  //     });
-  // }
-  // componentWillMount() {
-  //   this.getCurData();
-  // }
 
   render() {
     let { currentPrice } = this.props;
