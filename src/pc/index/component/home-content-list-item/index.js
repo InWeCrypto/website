@@ -1,4 +1,6 @@
 import React from "react";
+import HomeContentListItemBack from "../home-content-list-item-back/index";
+
 import "./index.less";
 
 const Text = {
@@ -57,8 +59,8 @@ export default class HomeContentListItem extends React.Component {
     }
     return (
       <div
-        //onMouseOver={this.mouseoverHandler}
-        // onMouseOut={this.mouseoutHandler}
+        onMouseOver={this.mouseoverHandler}
+        onMouseOut={this.mouseoutHandler}
         ref="item"
         className="pc-home-content-list-item"
         data-id={id}
@@ -75,7 +77,6 @@ export default class HomeContentListItem extends React.Component {
             <h2>{name}</h2>
             <p>{Text[descType]}</p>
           </div>
-          <div className="list-item-back">-----------{text}--------------</div>
         </a>
       </div>
     );

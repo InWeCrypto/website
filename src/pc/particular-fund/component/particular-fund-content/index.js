@@ -1,24 +1,24 @@
-import React from 'react'
-import { getData, switchCard } from '../../../lib/app/js/app'
-import { PORTOCAL } from '../../../lib/app/js/env'
-import ParticularFundCurrent from '../particular-fund-current/index'
-import ParticularFundDetail from '../particular-fund-detail/index'
+import React from "react";
+import { getData, switchCard } from "../../../lib/app/js/app";
+import { PORTOCAL } from "../../../lib/app/js/env";
+import ParticularFundCurrent from "../particular-fund-current/index";
+import ParticularFundDetail from "../particular-fund-detail/index";
 
-import './index.less'
-
+import "./index.less";
 
 export default class ParticularFundContent extends React.Component {
-  
   render() {
-    let { info } = this.props
+    let { contentData } = this.props;
+    console.log(contentData);
     return (
       <div className="pc-particular-fund-content">
-        <ParticularFundCurrent />
-        <ParticularFundDetail />
+        <ParticularFundCurrent
+          currentData={contentData && contentData.data.project_detail}
+        />
+        <ParticularFundDetail
+          detailData={contentData && contentData.data.ico_detail}
+        />
       </div>
-    )
+    );
   }
 }
-
-
-

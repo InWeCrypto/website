@@ -38,7 +38,11 @@ export default class HomeHeaderNavList extends React.Component {
         <a
           className={cls("nav-item", classIco)}
           onClick={e => this.onClick(e)}
+<<<<<<< HEAD
           href="../../../../evaluating"
+=======
+          href="/"
+>>>>>>> particular
         >
           Ico评测
         </a>
@@ -52,7 +56,11 @@ export default class HomeHeaderNavList extends React.Component {
         <a
           className={cls("nav-item", classBrowser)}
           onClick={e => this.onClick(e)}
+<<<<<<< HEAD
           href="../../particular-online"
+=======
+          href=""
+>>>>>>> particular
         >
           浏览器
         </a>
