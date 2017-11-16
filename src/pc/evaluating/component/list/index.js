@@ -14,15 +14,19 @@ export default class List extends Component {
     };
   }
   getListData() {
-    getData(`${PORTOCAL}/article/ico`).then(data => {
-      if (data.code === 4000) {
-        this.setState({
-          list: [...data.data]
-        });
-      } else {
-        throw new Error(data.msg);
-      }
-    });
+    getData(`${PORTOCAL}/article/ico`)
+      .then(data => {
+        if (data.code === 4000) {
+          this.setState({
+            list: [...data.data]
+          });
+        } else {
+          throw new Error(data.msg);
+        }
+      })
+      .catch(e => {
+        alert(e.toString().replace("Error:", ""));
+      });
   }
   componentDidMount() {
     this.getListData();
@@ -62,7 +66,9 @@ export default class List extends Component {
               </Link>
             );
           })}
-        {this.state.list.length == 0 && <div>暂无数据</div>}
+        {this.state.list.length == 0 && (
+          <div style={{ padding: "200px 0" }}>暂无数据</div>
+        )}
       </div>
     );
   }

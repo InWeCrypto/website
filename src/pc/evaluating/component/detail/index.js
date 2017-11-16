@@ -9,7 +9,8 @@ export default class Detail extends Component {
   constructor(props, content) {
     super(props);
     this.state = {
-      query: null
+      query: null,
+      viewData: null
     };
   }
   componentWillMount() {
@@ -18,14 +19,45 @@ export default class Detail extends Component {
       query: q
     });
   }
-  componentDidMount() {}
+  componentDidMount() {
+    getData(`${PORTOCAL}/article/ico/` + this.state.query.id)
+      .then(data => {
+        console.log(data);
+        if (data.code === 4000) {
+          this.setState({
+            viewData: { ...data.data[0] }
+          });
+        } else {
+          throw new error(data.msg);
+        }
+      })
+      .catch(e => {
+        alert(e.toString().replace("Error:", ""));
+      });
+  }
   render() {
+    let cont = this.state.viewData;
     return (
       <div className="detail-box">
-        <div className="detail">
-          <div className="detail-title">sss</div>
-          <div className="detail-time">更新于：2017-14-20 11：11：11</div>
-        </div>
+        {cont && (
+          <div className="detail">
+            <div className="detail-title">{cont.title}</div>
+            <div className="detail-time">更新于：{cont.created_at}</div>
+            <div className="detail-box1">
+              <div className="box1-left">
+                <div className="circle">7.9</div>
+                <div className="state">上线交易中</div>
+              </div>
+              <div className="box1-middle">11</div>
+              <div className="box1-right">
+                <span className="right-item">山鸡山鸡山鸡</span>
+                <br />
+                <span className="right-item">山鸡山鸡山鸡</span>
+              </div>
+            </div>
+          </div>
+        )}
+        {!cont && <div style={{ padding: "200px 0" }}>无法查询到数据</div>}
       </div>
     );
   }
