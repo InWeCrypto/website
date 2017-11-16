@@ -25,24 +25,31 @@ export default class SignIn extends Component {
   signinClick() {
     let phone = this.state.phone;
     let password = this.state.password;
-    if (!this.verifyphone(phone)) {
-      alert("邮箱格式错误");
+    if (!this.verifyPhone(phone)) {
+      alert("手机号格式错误");
       return;
     }
     getData(`${PORTOCAL}/user/login`, "POST", {
       phone: phone,
       password: password
-    }).then(data => {
-      console.log(data);
-    });
+    })
+      .then(data => {
+        if (data.code === 4000) {
+        } else {
+          throw new Error(data.msg);
+        }
+      })
+      .catch(e => {
+        alert(e.toString().replace("Error:", ""));
+      });
   }
   inputChange(type, e) {
     this.setState({
       [type]: e.target.value
     });
   }
-  verifyphone(phone) {
-    let reg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+  verifyPhone(phone) {
+    let reg = /^1[34578]\d{9}$/;
     return reg.test(phone);
   }
   render() {
