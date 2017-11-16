@@ -17,7 +17,6 @@ import ParticularOnlineCurrentPrice from "../particular-online-current-price/ind
 // import AllInfoVideo from '../all-info-video/index'
 
 import "./index.less";
-
 export default class ParticularOnlineContent extends React.Component {
   // componentDidMount() {
   //   let chart = this.refs.chart;
@@ -245,9 +244,19 @@ export default class ParticularOnlineContent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currUrl: "",
-      currentPrice: this.getUrl(this.props.project_time_prices, 1)
+      currUrl: props.project_time_prices ? props.project_time_prices : null,
+      currentPrice: null,
+      isLoaded: false,
+      curType: 0
     };
+  }
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      currUrl: nextProps.project_time_prices
+    });
+  }
+  componentDidUpdate() {
+    this.getCurPrice();
   }
   getUrl = (data, id) => {
     let url = "";
@@ -259,77 +268,75 @@ export default class ParticularOnlineContent extends React.Component {
     });
     return url;
   };
+  getCurPrice() {
+    if (
+      !this.state.currUrl ||
+      !this.state.currUrl[this.state.curType] ||
+      !this.state.currUrl[this.state.curType].current_url ||
+      this.state.isLoaded
+    ) {
+      return;
+    }
+
+    getData(
+      `${PORTOCAL}${this.state.currUrl[this.state.curType].current_url}`
+    ).then(data => {
+      if (data.code === 4000) {
+        this.setState({
+          isLoaded: true
+        });
+        this.setState({
+          currentPrice: data.data
+        });
+      } else {
+        throw new Error(data.msg);
+      }
+    });
+  }
+
   usdHandler = e => {
     this.setState({
-      currUrl: this.getUrl(this.props.project_time_prices, 1)
+      isLoaded: false,
+      curType: 0
     });
     switchCard("act", e);
   };
   btcHandler = e => {
     this.setState({
-      currUrl: this.getUrl(this.props.project_time_prices, 2)
+      isLoaded: false,
+      curType: 1
     });
     switchCard("act", e);
   };
   ethHandler = e => {
     this.setState({
-      currUrl: this.getUrl(this.props.project_time_prices, 3)
+      isLoaded: false,
+      curType: 2
     });
     switchCard("act", e);
   };
   render() {
-    console.log(this.state);
     let { project_time_prices } = this.props;
     return (
       <div className="pc-particular-online-content">
-        <Router>
-          <div>
-            <ul className="coin-choice" onClick={this.itemClickHandler}>
-              <li
-                onClick={this.usdHandler}
-                className="coin-item act"
-                to="/coin-usd"
-              >
-                美元
-              </li>
-              <li
-                onClick={this.btcHandler}
-                className="coin-item"
-                to="/coin-btc"
-              >
-                BTC
-              </li>
-              <li
-                onClick={this.ethHandler}
-                className="coin-item"
-                to="/coin-eth"
-              >
-                ETH
-              </li>
-            </ul>
-            <ParticularOnlineCurrentPrice
-              currentPrice={this.state.currentPrice}
-              // currUrl={this.state.currUrl}
-            />
-          </div>
-        </Router>
+        <div>
+          <ul className="coin-choice">
+            <li onClick={this.usdHandler} className="coin-item act">
+              美元
+            </li>
+            <li onClick={this.btcHandler} className="coin-item">
+              BTC
+            </li>
+            <li onClick={this.ethHandler} className="coin-item">
+              ETH
+            </li>
+          </ul>
+          <ParticularOnlineCurrentPrice
+            currentPrice={this.state.currentPrice}
+          />
+        </div>
         <div ref="chart" className="price-chart" />
       </div>
     );
-  }
-
-  async componentDidUpdate() {
-    let d = await getData(`${PORTOCAL}${this.state.currUrl}`);
-    this.setState({
-      currentPrice: d.data
-    });
-  }
-  componentWillUpdate(nextP) {
-    console.log(this.state);
-    if (this.props.project_time_prices !== nextP.project_time_prices) {
-      this.setState({
-        currUrl: this.getUrl(nextP.project_time_prices, 1)
-      });
-    }
   }
 }

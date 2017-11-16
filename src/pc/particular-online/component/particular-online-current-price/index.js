@@ -9,9 +9,26 @@ export default class ParticularOnlineCurrentPrice extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //   currentPrice: ""
+      currentPrice: this.props.currentPrice
     };
   }
+  // getCurData() {
+  //   getData(`${PORTOCAL}` + this.state.currentPrice)
+  //     .then(data => {
+  //       console.log(data);
+  //       if (data.code === 4000) {
+  //       } else {
+  //         throw new Error(data.msg);
+  //       }
+  //     })
+  //     .catch(e => {
+  //       alert(e.toString().replace("Error:", ""));
+  //     });
+  // }
+  // componentWillMount() {
+  //   this.getCurData();
+  // }
+
   render() {
     let { currentPrice } = this.props;
     // let { currentPrice } = this.state.currentPrice;
@@ -46,11 +63,4 @@ export default class ParticularOnlineCurrentPrice extends Component {
       </ul>
     );
   }
-
-  // async componentDidUpdate() {
-  //   let d = await getData(`${PORTOCAL}/project/${this.props.currUrl}`);
-  //   this.setState({
-  //     currentPrice: d.data
-  //   });
-  // }
 }

@@ -13,7 +13,7 @@ import ParticularSideBar from "../common-component/particular-sidebar/index";
 import "./index.less";
 
 let search = decodeURIComponent(window.location.search);
-let projectId = JSON.parse(search.split("?")[1]);
+let projectId = search.split("?")[1];
 
 export default class ParticularOnline extends React.Component {
   constructor(props) {
@@ -28,19 +28,22 @@ export default class ParticularOnline extends React.Component {
         <CommonHeader classInfo="nav-item-active" />
         <div className="page-wrap">
           <div className="content">
-            <ParticularOnlineMain
-              totalData={this.state.theProject && this.state.theProject.data}
-            />
+            <ParticularOnlineMain totalData={this.state.theProject} />
             <ParticularSideBar />
           </div>
         </div>
       </div>
     );
   }
-  async componentDidMount() {
-    let data = await getData(`${PORTOCAL}/project/${projectId}`);
-    this.setState({
-      theProject: data
+  componentDidMount() {
+    getData(`${PORTOCAL}/project/${projectId}`).then(data => {
+      if (data.code === 4000) {
+        this.setState({
+          theProject: data.data
+        });
+      } else {
+        throw new Error(data.msg);
+      }
     });
   }
 }

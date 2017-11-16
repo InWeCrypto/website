@@ -21,18 +21,9 @@ export default class ParticularOnlineMain extends React.Component {
         point: "针对痛点",
         team: "团队介绍页面",
         example: "应用案例页面"
-      },
-      project_time_prices: null,
-      project_markets: null
+      }
     };
   }
-  // async componentDidMount(nextProps) {
-  //   let d = await getData(`${PORTOCAL}/project/6`);
-  //   this.setState({
-  //     project_time_prices: d.data.project_time_prices,
-  //     project_markets: d.data.project_markets
-  //   });
-  // }
 
   render() {
     let { totalData } = this.props;
