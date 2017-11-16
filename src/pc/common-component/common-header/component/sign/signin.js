@@ -34,10 +34,10 @@ export default class SignIn extends Component {
       password: password
     })
       .then(data => {
-        console.log(data);
         if (data.code === 4000) {
           window.localStorage.setItem("userInfo", JSON.stringify(data.data));
           this.goView("signin", false);
+          this.props.signIn();
         } else {
           throw new Error(data.msg);
         }

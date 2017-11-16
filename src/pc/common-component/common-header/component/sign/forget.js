@@ -23,7 +23,7 @@ export default class Forget extends Component {
       isSend: false
     };
   }
-  goView(type, isOpen) {
+  goView(type, isOpen = true) {
     this.props.changeState(isOpen, type);
   }
 
@@ -64,6 +64,22 @@ export default class Forget extends Component {
       alert("重复密码不能为空");
       return;
     }
+    getData(`${PORTOCAL}/user/reset_password`, "POST", {
+      phone: this.state.phone,
+      password: this.state.password,
+      password_confirmation: this.state.password_confirmation,
+      code: this.state.code
+    })
+      .then(data => {
+        if (data.code === 4000) {
+          this.goView("signin");
+        } else {
+          throw new Error(data.msg);
+        }
+      })
+      .catch(e => {
+        alert(e.toString().replace("Error:", ""));
+      });
   }
   getCode() {
     if (this.state.isSend) {

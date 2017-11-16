@@ -24,8 +24,8 @@ export default class SignUp extends Component {
       isSend: false
     };
   }
-  goView(type) {
-    this.props.changeState(true, type);
+  goView(type, isOpen = true) {
+    this.props.changeState(isOpen, type);
   }
   inputChange(type, e) {
     this.setState({
@@ -110,6 +110,9 @@ export default class SignUp extends Component {
     })
       .then(data => {
         if (data.code === 4000) {
+          window.localStorage.setItem("userInfo", JSON.stringify(data.data));
+          this.goView("signin", false);
+          this.props.signIn();
         } else {
           throw new Error(data.msg);
         }

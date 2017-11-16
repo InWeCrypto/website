@@ -36,6 +36,7 @@ export default class HomeHeaderLogin extends React.Component {
       <Sign
         changeState={this.changeSignState.bind(this)}
         type={this.state.loginType}
+        signIn={this.changeUserInfo.bind(this)}
       />
     ) : (
       ""

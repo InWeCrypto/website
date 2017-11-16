@@ -83,3 +83,12 @@ export const switchCard = (active, e) => {
   }
   e.target.className += ` ${active}`;
 };
+export const getQuery = query => {
+  let res = {};
+  let arr = query.substr(1, query.length).split("&");
+  arr.map(item => {
+    let s = item.split("=");
+    res[s[0]] = s[1];
+  });
+  return res;
+};
