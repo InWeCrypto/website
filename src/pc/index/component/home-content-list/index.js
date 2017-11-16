@@ -117,6 +117,9 @@ export default class HomeContentList extends React.Component {
                             id={item[0].id}
                             width={style.width}
                             height={style.height}
+                            src={item[0].img}
+                            name={item[0].name}
+                            descType={item[0].type}
                           />
                         );
                       })}

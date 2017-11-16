@@ -1,4 +1,10 @@
 // 项目公共逻辑和方法
+import "whatwg-fetch";
+import Promise from "promise-polyfill";
+
+if (!window.Promise) {
+  window.Promise = Promise;
+}
 
 // eg: url = 'http://inwecryptocms.app/ad'
 export const getData = function(url, method, param, header) {
