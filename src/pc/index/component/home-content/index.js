@@ -1,6 +1,7 @@
 import React from "react";
 import { getData } from "../../../lib/app/js/app";
 import { PORTOCAL } from "../../../lib/app/js/env";
+import $ from "jquery";
 
 import HomeContentHeader from "../home-content-header/index";
 import HomeContentList from "../home-content-list/index";
@@ -10,15 +11,43 @@ export default class HomeContent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      project: null
+      project: null,
+      scrollLeft: 0,
+      listWidth: 0,
+      listScroll: 0,
+      move: 0
     };
   }
+  getMove(move) {
+    this.setState({
+      move: move
+    });
+  }
+  componentWillUpdate(nextP, nextS) {
+    if (this.state.move !== nextS.move) {
+      let li = this.refs.cardList.refs.list;
+      $(li).animate(
+        {
+          scrollLeft: nextS.move
+        },
+        600
+      );
+      this.setState({
+        scrollLeft: nextS.move
+      });
+    }
+  }
   render() {
+    let { scrollLeft, listWidth, move } = this.state;
     return (
       <div className="pc-home-content">
-        <HomeContentHeader />
+        <HomeContentHeader
+          scrollLeft={scrollLeft}
+          listWidth={listWidth}
+          getMove={this.getMove.bind(this)}
+        />
         <div className="content-list-wrap">
-          <HomeContentList project={this.state.project} />
+          <HomeContentList ref="cardList" project={this.state.project} />
         </div>
       </div>
     );
@@ -28,5 +57,10 @@ export default class HomeContent extends React.Component {
     this.setState({
       project: data
     });
+    this.setState({
+      scrollLeft: this.refs.cardList.refs.list.scrollLeft,
+      listWidth: this.refs.cardList.refs.list.scrollWidth
+    });
+    //  console.log(this.refs.cardList.refs);
   }
 }

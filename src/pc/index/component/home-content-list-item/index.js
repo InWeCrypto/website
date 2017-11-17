@@ -103,10 +103,7 @@ export default class HomeContentListItem extends React.Component {
                 {carousels.map(item => {
                   return (
                     <div key={item.id}>
-                      <img
-                        className="slide-page"
-                        src={`${PORTOCAL}/${item.img}`}
-                      />;
+                      <img className="slide-page" src={item.img} />;
                       <div className="slideControl">{item.title}</div>;
                     </div>
                   );
@@ -118,11 +115,23 @@ export default class HomeContentListItem extends React.Component {
         {!carousels && (
           <a href={downloads ? downloads[0].url : link}>
             <div className="list-item-content">
-              {src && <img src={`${PORTOCAL}/${src}`} />}
-              {score && <div className="item-score">{score}</div>}
-              <h2>{name}</h2>
-              <p>{Text[descType]}</p>
-              {downloads && <button className="downloadBtn">DOWNLOAD</button>}
+              {src && (
+                <div
+                  className="content-img"
+                  style={{
+                    width: `${this.state.width / 2}px`,
+                    height: `${this.state.height / 2}px`
+                  }}
+                >
+                  <img src={src} />
+                </div>
+              )}
+              <div className="content-text">
+                {score && <div className="item-score">{score}</div>}
+                <h2>{name}</h2>
+                <p>{Text[descType]}</p>
+                {downloads && <button className="downloadBtn">DOWNLOAD</button>}
+              </div>
             </div>
             <HomeContentListItemBack
               background={background}

@@ -95,7 +95,7 @@ export default class HomeContentList extends React.Component {
 
   render() {
     if (this.props.project) {
-      console.log(this.props.project);
+      //console.log(this.props.project);
       // }
       // if (this.state.listArr && this.state.listArr.length > 0) {
       let allData = sortProject(this.props.project.data);
@@ -125,7 +125,6 @@ export default class HomeContentList extends React.Component {
                             descType={item[0].type}
                             background={item[0].color}
                             url={item[0].url}
-                            name={item[0].name}
                             score={item[0].score}
                             downloads={item[0].downloads}
                             carousels={item[0].carousels}
@@ -156,11 +155,13 @@ export default class HomeContentList extends React.Component {
                             width={style.width}
                             height={style.height}
                             background={item[0].color}
+                            src={item[0].img}
                             url={item[0].url}
                             name={item[0].name}
                             score={item[0].score}
                             downloads={item[0].downloads}
                             carousels={item[0].carousels}
+                            descType={item[0].type}
                           />
                         );
                       })}
