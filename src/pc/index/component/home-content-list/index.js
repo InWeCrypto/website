@@ -57,7 +57,6 @@ export default class HomeContentList extends React.Component {
         draggable: false,
         onStart: function(e) {
           let items = $(".pc-home-content-list-item");
-          console.log(items);
         },
         onAdd: function(evt) {
           var itemEl = evt.item; // dragged HTMLElement
@@ -95,8 +94,12 @@ export default class HomeContentList extends React.Component {
   };
 
   render() {
-    if (this.state.listArr && this.state.listArr.length > 0) {
-      let allData = sortProject(this.state.listArr);
+    if (this.props.project) {
+      console.log(this.props.project);
+      // }
+      // if (this.state.listArr && this.state.listArr.length > 0) {
+      let allData = sortProject(this.props.project.data.original.data);
+      let that = this;
       return (
         <div ref="list" className="pc-home-content-list">
           <div className="list-even">
@@ -120,6 +123,12 @@ export default class HomeContentList extends React.Component {
                             src={item[0].img}
                             name={item[0].name}
                             descType={item[0].type}
+                            background={item[0].color}
+                            url={item[0].url}
+                            name={item[0].name}
+                            score={item[0].score}
+                            downloads={item[0].downloads}
+                            carousels={item[0].carousels}
                           />
                         );
                       })}
@@ -146,6 +155,12 @@ export default class HomeContentList extends React.Component {
                             // top = {item[1].top} left = {item[1].left
                             width={style.width}
                             height={style.height}
+                            background={item[0].color}
+                            url={item[0].url}
+                            name={item[0].name}
+                            score={item[0].score}
+                            downloads={item[0].downloads}
+                            carousels={item[0].carousels}
                           />
                         );
                       })}

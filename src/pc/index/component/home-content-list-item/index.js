@@ -1,6 +1,9 @@
 import React from "react";
 import HomeContentListItemBack from "../home-content-list-item-back/index";
-
+import downloadImg from "../../../lib/app/img/project_icon.png";
+import Slider from "react-slick";
+import { PORTOCAL } from "../../../lib/app/js/env";
+import { getData } from "../../../lib/app/js/app";
 import "./index.less";
 
 const Text = {
@@ -19,7 +22,8 @@ export default class HomeContentListItem extends React.Component {
     this.state = {
       width: props.width || 0,
       height: props.height || 0,
-      transY: 0
+      transY: 0,
+      backData: null
     };
   }
   componentWillReceiveProps(nextProps) {
@@ -29,16 +33,23 @@ export default class HomeContentListItem extends React.Component {
     });
   }
   mouseoverHandler = e => {
+    if (this.props.descType !== 5) return;
     this.setState({
       transY: 180
     });
   };
   mouseoutHandler = e => {
+    if (this.props.descType !== 5) return;
     this.setState({
       transY: 0
     });
   };
-
+  async componentDidMount() {
+    let d = await getData(`${PORTOCAL}/${this.props.url}`);
+    this.setState({
+      backData: d.data
+    });
+  }
   render() {
     let {
       width,
@@ -49,8 +60,22 @@ export default class HomeContentListItem extends React.Component {
       id,
       src,
       score,
-      descType
+      name,
+      background,
+      descType,
+      url,
+      downloads,
+      carousels
     } = this.props;
+    let settings = {
+      dots: false,
+      infinite: true,
+      autoplay: true,
+      speed: 500,
+      autoplaySpend: 100,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
     let link = "";
     if (descType === 5 || descType === 6) {
       link = `../../../particular-online?${id}`;
@@ -67,17 +92,47 @@ export default class HomeContentListItem extends React.Component {
         style={{
           width: `${this.state.width}px`,
           height: `${this.state.height}px`,
-          transform: `rotateY(${this.state.transY}deg)`
+          transform: `rotateY(${this.state.transY}deg)`,
+          background: `${background}` || "#f0f"
         }}
       >
-        <a href={link}>
-          <div className="list-item-content">
-            <img src={src} />
-            <div className="item-score">{score}</div>
-            <h2>{name}</h2>
-            <p>{Text[descType]}</p>
-          </div>
-        </a>
+        {carousels && (
+          <a href={downloads ? downloads[0].url : link}>
+            <div className="project-slide">
+              <Slider {...settings}>
+                {carousels.map(item => {
+                  return (
+                    <div key={item.id}>
+                      <img
+                        className="slide-page"
+                        src={`${PORTOCAL}/${item.img}`}
+                      />;
+                      <div className="slideControl">{item.title}</div>;
+                    </div>
+                  );
+                })}
+              </Slider>
+            </div>
+          </a>
+        )}
+        {!carousels && (
+          <a href={downloads ? downloads[0].url : link}>
+            <div className="list-item-content">
+              {src && <img src={`${PORTOCAL}/${src}`} />}
+              {score && <div className="item-score">{score}</div>}
+              <h2>{name}</h2>
+              <p>{Text[descType]}</p>
+              {downloads && <button className="downloadBtn">DOWNLOAD</button>}
+            </div>
+            <HomeContentListItemBack
+              background={background}
+              url={url}
+              score={score}
+              name={name}
+              backData={this.state.backData}
+            />
+          </a>
+        )}
       </div>
     );
   }
