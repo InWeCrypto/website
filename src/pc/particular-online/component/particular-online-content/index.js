@@ -23,6 +23,7 @@ export default class ParticularOnlineContent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isFirst: true,
       currUrl: props.project_time_prices ? props.project_time_prices : null,
       currentPrice: null,
       isLoaded: false,
@@ -33,10 +34,11 @@ export default class ParticularOnlineContent extends React.Component {
       optionData: null
     };
   }
-  viewEcharts() {
-    if (!this.state.oldData) {
+  viewEcharts(nextState) {
+    if (!nextState.oldData) {
       return;
     }
+
     let chart = this.refs.chart;
     let myChart = echarts.init(chart);
     var upColor = "#ec0000";
@@ -45,10 +47,9 @@ export default class ParticularOnlineContent extends React.Component {
     var downBorderColor = "#008F28";
 
     // 数据意义：开盘(open)，收盘(close)，最低(lowest)，最高(highest)
-    var data0 = splitData(this.state.optionData ? this.state.optionData : []);
+    var data0 = splitData(nextState.optionData ? nextState.optionData : []);
 
     function splitData(rawData) {
-      console.log();
       var categoryData = [];
       var values = [];
       for (var i = 0; i < rawData.length; i++) {
@@ -256,23 +257,25 @@ export default class ParticularOnlineContent extends React.Component {
 
     myChart.setOption(option);
   }
-  setOptionData() {
-    if (!this.state.oldData) {
+  setOptionData(nextState) {
+    if (!nextState.oldData || !nextState.kLoaded) {
       return;
     }
-    console.log(111);
-    let oldKey = Object.keys(this.state.oldData);
+    document.write(JSON.stringify(nextState.oldData));
+    let oldKey = Object.keys(nextState.oldData);
     let res = [];
-    this.state.oldData[oldKey[1]].map((item, index) => {
+    nextState.oldData[oldKey[1]].map((item, index) => {
       let r = [];
       r[0] = this.setTimeString(item[0]);
       oldKey.map((item1, index1) => {
-        r.push(this.state.oldData[item1][index][1]);
+        r.push(nextState.oldData[item1][index][1]);
       });
       res.push(r);
     });
+
     this.setState({
-      optionData: res
+      optionData: JSON.parse(JSON.stringify(res)),
+      kLoaded: false
     });
   }
   setTimeString(time) {
@@ -289,15 +292,39 @@ export default class ParticularOnlineContent extends React.Component {
       currUrl: nextProps.project_time_prices
     });
   }
-  componentWillUpdate() {
-    if (this.state.isLoaded) {
-      //this.setOptionData();
-      //this.viewEcharts();
+
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState.isFirst) {
+      this.getCurPrice(nextState);
+      this.getKlineData(nextState);
+      this.setState({
+        isFirst: false
+      });
     }
-  }
-  componentDidUpdate() {
-    this.getCurPrice();
-    this.getKlineData(this.state.timeIndex);
+    if (
+      nextState.currUrl &&
+      nextState.currUrl[nextState.curType] &&
+      nextState.currUrl[nextState.curType].current_url &&
+      !nextState.isLoaded &&
+      nextState.curType != this.state.curType
+    ) {
+      this.getCurPrice(nextState);
+    }
+    if (
+      nextState.currUrl &&
+      nextState.currUrl[nextState.curType] &&
+      nextState.currUrl[nextState.curType].current_url &&
+      !nextState.kLoaded &&
+      (nextState.curType != this.state.curType ||
+        nextState.timeIndex != this.state.timeIndex)
+    ) {
+      this.getKlineData(nextState);
+    }
+
+    if (nextState.kLoaded) {
+      this.setOptionData(nextState);
+      this.viewEcharts(nextState);
+    }
   }
   getUrl = (data, id) => {
     let url = "";
@@ -309,23 +336,12 @@ export default class ParticularOnlineContent extends React.Component {
     });
     return url;
   };
-  getCurPrice() {
-    if (
-      !this.state.currUrl ||
-      !this.state.currUrl[this.state.curType] ||
-      !this.state.currUrl[this.state.curType].current_url ||
-      this.state.isLoaded
-    ) {
-      return;
-    }
-
-    getData(`${PORTOCAL}/${this.state.currUrl[this.state.curType].current_url}`)
+  getCurPrice(nextState) {
+    getData(`${PORTOCAL}/${nextState.currUrl[nextState.curType].current_url}`)
       .then(data => {
         if (data.code === 4000) {
           this.setState({
-            isLoaded: true
-          });
-          this.setState({
+            isLoaded: true,
             currentPrice: data.data
           });
         } else {
@@ -336,19 +352,11 @@ export default class ParticularOnlineContent extends React.Component {
         alert(e.toString().replace("Error:", ""));
       });
   }
-  getKlineData(type) {
-    if (
-      !this.state.currUrl ||
-      !this.state.currUrl[this.state.curType] ||
-      !this.state.currUrl[this.state.curType].current_url ||
-      this.state.kLoaded
-    ) {
-      return;
-    }
+  getKlineData(nextState) {
     let now = parseInt(new Date().getTime() / 1000);
     let start;
     let day = 24 * 60 * 80;
-    switch (type) {
+    switch (nextState.timeIndex) {
       case 0:
         start = now - 6 * 60 * 60;
         break;
@@ -363,11 +371,10 @@ export default class ParticularOnlineContent extends React.Component {
         break;
     }
     getData(
-      `${PORTOCAL}/${this.state.currUrl[this.state.curType]
+      `${PORTOCAL}/${nextState.currUrl[nextState.curType]
         .k_line_data_url}/${start}/${now}`
     )
       .then(data => {
-        console.log(data);
         if (data.code === 4000) {
           this.setState({
             kLoaded: true,
@@ -409,7 +416,6 @@ export default class ParticularOnlineContent extends React.Component {
     return this.state.timeIndex === idx ? "time act" : "time";
   }
   timeClick(idx) {
-    console.log(1);
     this.setState({
       timeIndex: idx,
       kLoaded: false
