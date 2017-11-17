@@ -13,7 +13,7 @@ export default class ParticularOnlineTable extends Component {
         <table className="table-data">
           <tbody>
             <tr>
-              <th />
+              {/* <th></th> */}
               <th>平台</th>
               <th>交易对</th>
               <th>价格</th>
@@ -29,9 +29,9 @@ export default class ParticularOnlineTable extends Component {
               keys.map((item, index) => {
                 return (
                   <tr key={index}>
-                    <td>
+                    {/* <td>
                       <img className="table-data-logo" />
-                    </td>
+                    </td> */}
                     <td>{cont[item].source}</td>
                     <td>{cont[item].pair}</td>
                     <td>{cont[item].pairce}</td>
