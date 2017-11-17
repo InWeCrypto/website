@@ -98,7 +98,7 @@ export default class HomeContentList extends React.Component {
       console.log(this.props.project);
       // }
       // if (this.state.listArr && this.state.listArr.length > 0) {
-      let allData = sortProject(this.props.project.data.original.data);
+      let allData = sortProject(this.props.project.data);
       let that = this;
       return (
         <div ref="list" className="pc-home-content-list">
