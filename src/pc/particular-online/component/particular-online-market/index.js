@@ -40,7 +40,6 @@ export default class ParticularOnlineMarket extends Component {
     });
     getData(`${PORTOCAL}/${url}`)
       .then(data => {
-        console.log(data);
         if (data.code === 4000) {
           this.setState({
             list: data.data,

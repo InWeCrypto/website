@@ -29,7 +29,7 @@ export default class ParticularOnline extends React.Component {
         <div className="page-wrap">
           <div className="content">
             <ParticularOnlineMain totalData={this.state.theProject} />
-            <ParticularSideBar />
+            <ParticularSideBar totalData={this.state.theProject} />
           </div>
         </div>
       </div>
