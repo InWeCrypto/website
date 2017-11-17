@@ -1,6 +1,7 @@
 // 项目公共逻辑和方法
 import "whatwg-fetch";
 import Promise from "promise-polyfill";
+import $ from "jquery";
 
 if (!window.Promise) {
   window.Promise = Promise;

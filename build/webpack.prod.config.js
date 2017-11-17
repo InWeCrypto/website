@@ -24,10 +24,10 @@ var webpackConfig = {
       minChunks: 3
     })
   ],
-  devtool: "source-map",
-  externals: {
-    jquery: "jQuery"
-  }
+  devtool: "source-map"
+  // externals: {
+  //   jquery: "jQuery"
+  // }
 };
 
 if (process.env.NODE_ENV === "production") {
