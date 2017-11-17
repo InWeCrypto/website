@@ -28,8 +28,9 @@ export default class ParticularNews extends React.Component {
     this.setState({
       id: nextProps.projectId
     });
+  }
+  componentWillUpdate() {
     if (!this.state.isLoaded && this.state.id) {
-      alert(11);
       this.getList("video");
       this.getList("img-txt");
       this.setState({
