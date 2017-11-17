@@ -34,7 +34,6 @@ export default class HomeContentListItemBack extends React.Component {
   }
   render() {
     let { background, url, collection, descType, backData } = this.props;
-    console.log(backData);
     return (
       <div
         className="pc-home-content-list-item-back"
