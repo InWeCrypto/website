@@ -499,38 +499,41 @@ export default class ParticularOnlineContent extends React.Component {
             currentPrice={this.state.currentPrice}
           />
         </div>
-        <div className="filter-box">
-          <span
-            onClick={this.timeClick.bind(this, 0)}
-            className={this.setTimeClass(0)}
-          >
-            5m
-          </span>
-          <span
-            onClick={this.timeClick.bind(this, 1)}
-            className={this.setTimeClass(1)}
-          >
-            6h
-          </span>
-          <span
-            onClick={this.timeClick.bind(this, 2)}
-            className={this.setTimeClass(2)}
-          >
-            1d
-          </span>
-          <span
-            onClick={this.timeClick.bind(this, 3)}
-            className={this.setTimeClass(3)}
-          >
-            7d
-          </span>
-          <span
-            onClick={this.timeClick.bind(this, 4)}
-            className={this.setTimeClass(4)}
-          >
-            30d
-          </span>
-        </div>
+        {this.state.currUrl.length != 0 && (
+          <div className="filter-box">
+            <span
+              onClick={this.timeClick.bind(this, 0)}
+              className={this.setTimeClass(0)}
+            >
+              5m
+            </span>
+            <span
+              onClick={this.timeClick.bind(this, 1)}
+              className={this.setTimeClass(1)}
+            >
+              6h
+            </span>
+            <span
+              onClick={this.timeClick.bind(this, 2)}
+              className={this.setTimeClass(2)}
+            >
+              1d
+            </span>
+            <span
+              onClick={this.timeClick.bind(this, 3)}
+              className={this.setTimeClass(3)}
+            >
+              7d
+            </span>
+            <span
+              onClick={this.timeClick.bind(this, 4)}
+              className={this.setTimeClass(4)}
+            >
+              30d
+            </span>
+          </div>
+        )}
+
         <div ref="chart" className="price-chart" />
       </div>
     );

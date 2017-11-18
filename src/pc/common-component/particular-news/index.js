@@ -79,11 +79,12 @@ export default class ParticularNews extends React.Component {
     let curIndex = this.state.curIndex;
     return (
       <div>
-        {(this.state.mediaList || this.state.imgTxtList) && (
+        {(this.state.mediaList.length > 0 ||
+          this.state.imgTxtList.length > 0) && (
           <div className="pc-particular-news">
             <h2 className="particular-news-title">INWE报道</h2>
             <ul className="news-list">
-              {this.state.mediaList && (
+              {this.state.mediaList.length > 0 && (
                 <li
                   onClick={this.switchHandler.bind(this, 0)}
                   className={this.curTab(0)}
@@ -91,7 +92,7 @@ export default class ParticularNews extends React.Component {
                   视频
                 </li>
               )}
-              {this.state.imgTxtList && (
+              {this.state.imgTxtList.length > 0 && (
                 <li
                   onClick={this.switchHandler.bind(this, 1)}
                   className={this.curTab(1)}
