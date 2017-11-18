@@ -29,7 +29,7 @@ export default class ParticularOnlineCurrentPrice extends Component {
             </li>
             <li className="current-price-item">
               <p>Volume</p>
-              <p>{currentPrice && currentPrice["24h_volume_usd"]}</p>
+              <p>{currentPrice && currentPrice["volume"]}</p>
             </li>
             <li className="current-price-item">
               <p>24H-Change</p>
