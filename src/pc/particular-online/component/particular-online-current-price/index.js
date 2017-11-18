@@ -9,13 +9,14 @@ import { div } from "zrender/lib/core/vector";
 export default class ParticularOnlineCurrentPrice extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      currentPrice: props.currentPrice ? props.currentPrice : null
-    };
+    // this.state = {
+    //   currentPrice: props.currentPrice ? props.currentPrice : null
+    // };
   }
 
   render() {
-    let { currentPrice } = this.state;
+    let { currentPrice } = this.props;
+    //console.log(this.props);
     // let { currentPrice } = this.state.currentPrice;
     return (
       <div>

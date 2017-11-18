@@ -40,9 +40,9 @@ export default class ParticularOnlineContent extends React.Component {
     }
     let chart = this.refs.chart;
     let myChart = echarts.init(chart);
-    var upColor = "#ec0000";
+    var upColor = "rgba(236, 0, 0, 0.5)";
     var upBorderColor = "#8A0000";
-    var downColor = "#00da3c";
+    var downColor = "rgba(0,218,60,0.5)";
     var downBorderColor = "#008F28";
 
     // 数据意义：开盘(open)，收盘(close)，最低(lowest)，最高(highest)
@@ -52,6 +52,7 @@ export default class ParticularOnlineContent extends React.Component {
         : []
     );
 
+    // document.write(JSON.stringify(data));
     function splitData(rawData) {
       var categoryData = [];
       var values = [];
@@ -97,7 +98,7 @@ export default class ParticularOnlineContent extends React.Component {
         left: "center",
         data: ["Dow-Jones index"]
       },
-      barWidth: 10,
+      barWidth: 4,
       tooltip: {
         trigger: "axis",
         axisPointer: {
@@ -159,12 +160,12 @@ export default class ParticularOnlineContent extends React.Component {
         {
           left: "10%",
           right: "8%",
-          height: "50%"
+          height: "40%"
         },
         {
           left: "10%",
           right: "8%",
-          top: "63%",
+          top: "68%",
           height: "16%"
         }
       ],
@@ -176,7 +177,7 @@ export default class ParticularOnlineContent extends React.Component {
           boundaryGap: false,
           axisLine: { onZero: false },
           splitLine: { show: false },
-          splitNumber: 0,
+          splitNumber: 20,
           min: "dataMin",
           max: "dataMax",
           axisPointer: {
@@ -240,7 +241,7 @@ export default class ParticularOnlineContent extends React.Component {
           xAxisIndex: [0, 1],
           type: "slider",
           top: "85%",
-          start: 98,
+          start: 0,
           end: 100
         }
       ],
@@ -422,21 +423,24 @@ export default class ParticularOnlineContent extends React.Component {
     let day = 24 * 60 * 80;
     switch (nextState.timeIndex) {
       case 0:
-        start = now - 6 * 60 * 60;
+        start = now - 5 * 60 * 400;
         break;
       case 1:
-        start = now - day * 1;
+        start = now - 6 * 60 * 60 * 400;
         break;
       case 2:
-        start = now - day * 7;
+        start = now - day * 1 * 400;
         break;
       case 3:
-        start = now - day * 30;
+        start = now - day * 7 * 400;
+        break;
+      case 4:
+        start = now - day * 30 * 400;
         break;
     }
     getData(
       `${PORTOCAL}/${nextState.currUrl[nextState.curType]
-        .k_line_data_url}/${start}/${now}`
+        .k_line_data_url}/${start}/${now}/10`
     )
       .then(data => {
         if (data.code === 4000) {
@@ -448,9 +452,7 @@ export default class ParticularOnlineContent extends React.Component {
           throw new Error(data.msg);
         }
       })
-      .catch(e => {
-        alert(e.toString().replace("Error:", ""));
-      });
+      .catch(e => {});
   }
   setTimeClass(idx) {
     return this.state.timeIndex === idx ? "time act" : "time";
@@ -501,23 +503,29 @@ export default class ParticularOnlineContent extends React.Component {
             onClick={this.timeClick.bind(this, 0)}
             className={this.setTimeClass(0)}
           >
-            6h
+            5m
           </span>
           <span
             onClick={this.timeClick.bind(this, 1)}
             className={this.setTimeClass(1)}
           >
-            1d
+            6h
           </span>
           <span
             onClick={this.timeClick.bind(this, 2)}
             className={this.setTimeClass(2)}
           >
-            7d
+            1d
           </span>
           <span
             onClick={this.timeClick.bind(this, 3)}
             className={this.setTimeClass(3)}
+          >
+            7d
+          </span>
+          <span
+            onClick={this.timeClick.bind(this, 4)}
+            className={this.setTimeClass(4)}
           >
             30d
           </span>

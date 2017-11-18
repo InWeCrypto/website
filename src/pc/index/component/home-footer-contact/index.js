@@ -17,7 +17,7 @@ export default class HomeFooterContact extends React.Component {
         </div>
         <div className="contact-item">
           <img className="contact-pic" src={emailPic} />
-          <a href="support@inwecrypto.com" className="contact-text">
+          <a href="mailto:support@inwecrypto.com" className="contact-text">
             support@inwecrypto.com
           </a>
         </div>

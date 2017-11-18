@@ -11,7 +11,7 @@ export default class HomeHeaderTopPersonDetail extends React.Component {
           <img src={home_top_ins} />
         </a>
         <span className="split-line" />
-        <a href="support@inwecrypto.com" className="detail-icon">
+        <a href="mailto:support@inwecrypto.com" className="detail-icon">
           <img src={home_top_mail} />
         </a>
       </div>
