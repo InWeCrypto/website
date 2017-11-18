@@ -79,6 +79,15 @@ var webpackConfig = {
         ]
       },
       {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {}
+          }
+        ]
+      },
+      {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         use: [
           {
