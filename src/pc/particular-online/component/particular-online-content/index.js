@@ -28,7 +28,7 @@ export default class ParticularOnlineContent extends React.Component {
       currentPrice: null,
       isLoaded: false,
       kLoaded: false,
-      curType: 0,
+      curType: null,
       timeIndex: 0,
       oldData: null,
       optionData: null
@@ -288,7 +288,8 @@ export default class ParticularOnlineContent extends React.Component {
   }
   componentWillReceiveProps(nextProps) {
     this.setState({
-      currUrl: nextProps.project_time_prices
+      currUrl: nextProps.project_time_prices,
+      curType: 0
     });
   }
 
@@ -336,6 +337,7 @@ export default class ParticularOnlineContent extends React.Component {
     return url;
   };
   getCurPrice(nextState) {
+    console.log(nextState);
     getData(`${PORTOCAL}/${nextState.currUrl[nextState.curType].current_url}`)
       .then(data => {
         if (data.code === 4000) {
@@ -387,30 +389,6 @@ export default class ParticularOnlineContent extends React.Component {
         alert(e.toString().replace("Error:", ""));
       });
   }
-  usdHandler = e => {
-    this.setState({
-      isLoaded: false,
-      kLoaded: false,
-      curType: 0
-    });
-    switchCard("act", e);
-  };
-  btcHandler = e => {
-    this.setState({
-      isLoaded: false,
-      kLoaded: false,
-      curType: 1
-    });
-    switchCard("act", e);
-  };
-  ethHandler = e => {
-    this.setState({
-      isLoaded: false,
-      kLoaded: false,
-      curType: 2
-    });
-    switchCard("act", e);
-  };
   setTimeClass(idx) {
     return this.state.timeIndex === idx ? "time act" : "time";
   }
@@ -420,6 +398,16 @@ export default class ParticularOnlineContent extends React.Component {
       kLoaded: false
     });
   }
+  menuClick(idx) {
+    this.setState({
+      isLoaded: false,
+      kLoaded: false,
+      curType: idx
+    });
+  }
+  showMenuClass(idx) {
+    return this.state.curType === idx ? "coin-item act" : "coin-item";
+  }
   render() {
     let { project_time_prices } = this.props;
 
@@ -427,15 +415,19 @@ export default class ParticularOnlineContent extends React.Component {
       <div className="pc-particular-online-content">
         <div>
           <ul className="coin-choice">
-            <li onClick={this.usdHandler} className="coin-item act">
-              美元
-            </li>
-            <li onClick={this.btcHandler} className="coin-item">
-              BTC
-            </li>
-            <li onClick={this.ethHandler} className="coin-item">
-              ETH
-            </li>
+            {this.state.currUrl &&
+              this.state.currUrl.length > 0 &&
+              this.state.currUrl.map((item, index) => {
+                return (
+                  <li
+                    onClick={this.menuClick.bind(this, index)}
+                    className={this.showMenuClass(index)}
+                    key={index}
+                  >
+                    {item.name}
+                  </li>
+                );
+              })}
           </ul>
           <ParticularOnlineCurrentPrice
             currentPrice={this.state.currentPrice}
