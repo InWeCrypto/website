@@ -78,76 +78,102 @@ export default class ParticularNews extends React.Component {
   render() {
     let curIndex = this.state.curIndex;
     return (
-      <div className="pc-particular-news">
-        <h2 className="particular-news-title">INWE报道</h2>
-        <ul className="news-list">
-          <li
-            onClick={this.switchHandler.bind(this, 0)}
-            className={this.curTab(0)}
-          >
-            视频
-          </li>
-          <li
-            onClick={this.switchHandler.bind(this, 1)}
-            className={this.curTab(1)}
-          >
-            图文
-          </li>
-        </ul>
-        {curIndex == 0 &&
-          this.state.mediaList.length > 0 && (
-            <ul className="news-card-wrap">
-              {this.state.mediaList &&
-                this.state.mediaList.map((item, index) => {
-                  return (
-                    <li
-                      className="news-card"
-                      onClick={this.goVideo.bind(this, item.video)}
-                      key={index}
-                    >
-                      <div className="news-pic">
-                        {item.img ? <img className="img" src={item.img} /> : ""}
-                      </div>
-                      <div className="news-content">
-                        <h2>{item.title}</h2>
-                        <p>{item.content}</p>
-                        <p>{item.created_at}</p>
-                      </div>
-                      <a href="../../all-info-detail-page" className="link" />
-                    </li>
-                  );
-                })}
+      <div>
+        {(this.state.mediaList || this.state.imgTxtList) && (
+          <div className="pc-particular-news">
+            <h2 className="particular-news-title">INWE报道</h2>
+            <ul className="news-list">
+              {this.state.mediaList && (
+                <li
+                  onClick={this.switchHandler.bind(this, 0)}
+                  className={this.curTab(0)}
+                >
+                  视频
+                </li>
+              )}
+              {this.state.imgTxtList && (
+                <li
+                  onClick={this.switchHandler.bind(this, 1)}
+                  className={this.curTab(1)}
+                >
+                  图文
+                </li>
+              )}
             </ul>
-          )}
-        {curIndex == 0 &&
-          this.state.mediaList.length == 0 && (
-            <div style={{ padding: "100px 0", textAlign: "center" }}>暂无数据</div>
-          )}
-        {curIndex == 1 &&
-          this.state.imgTxtList.length > 0 && (
-            <ul className="news-card-wrap">
-              {this.state.imgTxtList &&
-                this.state.imgTxtList.map((item, index) => {
-                  return (
-                    <li className="news-card" key={index}>
-                      <div className="news-pic">
-                        {item.img ? <img className="img" src={item.img} /> : ""}
-                      </div>
-                      <div className="news-content">
-                        <h2>{item.title}</h2>
-                        <p>{item.content}</p>
-                        <p>{item.created_at}</p>
-                      </div>
-                      <a href="../../all-info-detail-page" className="link" />
-                    </li>
-                  );
-                })}
-            </ul>
-          )}
-        {curIndex == 1 &&
-          this.state.imgTxtList.length == 0 && (
-            <div style={{ padding: "100px 0", textAlign: "center" }}>暂无数据</div>
-          )}
+            {curIndex == 0 &&
+              this.state.mediaList.length > 0 && (
+                <ul className="news-card-wrap">
+                  {this.state.mediaList &&
+                    this.state.mediaList.map((item, index) => {
+                      return (
+                        <li
+                          className="news-card"
+                          onClick={this.goVideo.bind(this, item.video)}
+                          key={index}
+                        >
+                          <div className="news-pic">
+                            {item.img ? (
+                              <img className="img" src={item.img} />
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                          <div className="news-content">
+                            <h2>{item.title}</h2>
+                            <p>{item.content}</p>
+                            <p>{item.created_at}</p>
+                          </div>
+                          <a
+                            href="../../all-info-detail-page"
+                            className="link"
+                          />
+                        </li>
+                      );
+                    })}
+                </ul>
+              )}
+            {curIndex == 0 &&
+              this.state.mediaList.length == 0 && (
+                <div style={{ padding: "100px 0", textAlign: "center" }}>
+                  暂无数据
+                </div>
+              )}
+            {curIndex == 1 &&
+              this.state.imgTxtList.length > 0 && (
+                <ul className="news-card-wrap">
+                  {this.state.imgTxtList &&
+                    this.state.imgTxtList.map((item, index) => {
+                      return (
+                        <li className="news-card" key={index}>
+                          <div className="news-pic">
+                            {item.img ? (
+                              <img className="img" src={item.img} />
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                          <div className="news-content">
+                            <h2>{item.title}</h2>
+                            <p>{item.content}</p>
+                            <p>{item.created_at}</p>
+                          </div>
+                          <a
+                            href="../../all-info-detail-page"
+                            className="link"
+                          />
+                        </li>
+                      );
+                    })}
+                </ul>
+              )}
+            {curIndex == 1 &&
+              this.state.imgTxtList.length == 0 && (
+                <div style={{ padding: "100px 0", textAlign: "center" }}>
+                  暂无数据
+                </div>
+              )}
+          </div>
+        )}
       </div>
     );
   }
