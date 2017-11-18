@@ -19,7 +19,9 @@ export default class ParticularOnlineMarket extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       project_markets: nextProps.project_markets,
-      choice: nextProps.project_markets[0].en_name
+      choice: nextProps.project_markets[0]
+        ? nextProps.project_markets[0].en_name
+        : null
     });
   }
   componentDidUpdate() {
