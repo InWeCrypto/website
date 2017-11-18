@@ -10,7 +10,7 @@ export default class ParticularOnlineMarket extends Component {
     super(props);
     this.state = {
       show: false,
-      choice: "ETH",
+      choice: props.project_markets ? props.project_markets[0].en_name : null,
       list: {},
       project_markets: props.project_markets ? props.project_markets : null,
       isLoaded: false
@@ -18,7 +18,8 @@ export default class ParticularOnlineMarket extends Component {
   }
   componentWillReceiveProps(nextProps) {
     this.setState({
-      project_markets: nextProps.project_markets
+      project_markets: nextProps.project_markets,
+      choice: nextProps.project_markets[0].en_name
     });
   }
   componentDidUpdate() {
@@ -60,20 +61,14 @@ export default class ParticularOnlineMarket extends Component {
       show: true
     });
   };
-  choiceHandler1 = e => {
+  choiceHandler(e) {
     this.setState({
       show: false,
       choice: e.target.innerHTML,
       isLoaded: false
     });
-  };
-  choiceHandler2 = e => {
-    this.setState({
-      show: false,
-      choice: e.target.innerHTML,
-      isLoaded: false
-    });
-  };
+  }
+
   render() {
     let { project_markets } = this.props;
     console.log(project_markets);
@@ -90,12 +85,17 @@ export default class ParticularOnlineMarket extends Component {
               className="market-drop"
               style={{ display: this.state.show ? "flex" : "none" }}
             >
-              <li onClick={this.choiceHandler1} className="market-drop-item">
-                ETH
-              </li>
-              <li onClick={this.choiceHandler2} className="market-drop-item">
-                BTC
-              </li>
+              {project_markets &&
+                project_markets.map((item, index) => {
+                  return (
+                    <li
+                      onClick={this.choiceHandler.bind(this)}
+                      className="market-drop-item"
+                    >
+                      {item.en_name}
+                    </li>
+                  );
+                })}
             </ul>
             <ParticularOnlineTable list={this.state.list} />
           </div>
