@@ -21,7 +21,7 @@ export default class AllInfoHomePageVideoCard extends React.Component {
     localStorage.setItem(id, JSON.stringify(this.props));
     return (
       <div className="pc-all-info-home-page-video-card">
-        <a href={`../../all-info-detail-page/index.html?${id}`}>
+        <a href={`../../all-info-detail-page/?${id}`}>
           <img className="video" src={img} />
           <div className="content">
             <h2>{title}</h2>

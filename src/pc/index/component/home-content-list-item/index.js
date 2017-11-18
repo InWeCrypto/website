@@ -78,9 +78,9 @@ export default class HomeContentListItem extends React.Component {
     };
     let link = "";
     if (descType === 5 || descType === 6) {
-      link = `../../../particular-online?${id}`;
+      link = `../../../particular-online/?${id}`;
     } else if (descType === 7 || descType === 8) {
-      link = `../../../particular-fund?${id}`;
+      link = `../../../particular-fund/?${id}`;
     }
     return (
       <div

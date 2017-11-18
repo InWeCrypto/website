@@ -20,7 +20,7 @@ export default class AllInfoHomePageTextImgCard extends React.Component {
     console.log(this.props);
     return (
       <div className="pc-all-info-home-page-text-img-card">
-        <a href={`../../all-info-detail-page/index.html?${id}`}>
+        <a href={`../../all-info-detail-page/?${id}`}>
           <img className="pic" src={link} />
           <div className="content">
             <h2>{title}</h2>
