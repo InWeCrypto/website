@@ -261,7 +261,6 @@ export default class ParticularOnlineContent extends React.Component {
     if (!nextState.oldData || !nextState.kLoaded) {
       return;
     }
-    document.write(JSON.stringify(nextState.oldData));
     let oldKey = Object.keys(nextState.oldData);
     let res = [];
     nextState.oldData[oldKey[1]].map((item, index) => {
