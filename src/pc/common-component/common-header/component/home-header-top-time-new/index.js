@@ -65,9 +65,9 @@ export default class HomeHeaderTopTimeNew extends React.Component {
         <div ref="box" className="new-content-box">
           <ul ref="list" className="new-content">
             {info &&
-              info.map(item => {
+              info.map((item, index) => {
                 return (
-                  <li className="new-content-text" key={item.id.toString()}>
+                  <li className="new-content-text" key={index}>
                     {item.symbol} 实时价格 ${item.price}
                   </li>
                 );
