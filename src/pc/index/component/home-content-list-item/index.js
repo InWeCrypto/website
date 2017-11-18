@@ -82,6 +82,7 @@ export default class HomeContentListItem extends React.Component {
     } else if (descType === 7 || descType === 8) {
       link = `../../../particular-fund/?${id}`;
     }
+    console.log(this.state.backData);
     return (
       <div
         onMouseOver={this.mouseoverHandler}

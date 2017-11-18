@@ -51,7 +51,7 @@ export default class HomeContentListItemBack extends React.Component {
             <p>当前价格: {backData && backData.price} </p>
             <p>24H最高价格: {backData && backData["24h_max_price"]}</p>
             <p>24H最低价格: {backData && backData["24h_min_price"]}</p>
-            {/* <p>24H涨幅: {backData && backData.percent_change_24h}</p> */}
+            <p>24H涨幅: {backData && backData["24h_change"]}</p>
           </div>
         </div>
       </div>
