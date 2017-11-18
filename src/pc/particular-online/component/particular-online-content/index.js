@@ -401,7 +401,9 @@ export default class ParticularOnlineContent extends React.Component {
     return url;
   };
   getCurPrice(nextState) {
-    console.log(nextState);
+    if (!nextState.currUrl || !nextState.currUrl[nextState.curType]) {
+      return;
+    }
     getData(`${PORTOCAL}/${nextState.currUrl[nextState.curType].current_url}`)
       .then(data => {
         if (data.code === 4000) {
@@ -418,6 +420,9 @@ export default class ParticularOnlineContent extends React.Component {
       });
   }
   getKlineData(nextState) {
+    if (!nextState.currUrl || !nextState.currUrl[nextState.curType]) {
+      return;
+    }
     let now = parseInt(new Date().getTime() / 1000);
     let start;
     let day = 24 * 60 * 60;
