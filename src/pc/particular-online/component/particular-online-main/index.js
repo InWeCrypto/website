@@ -21,7 +21,7 @@ export default class ParticularOnlineMain extends React.Component {
     let { totalData } = this.props;
     return (
       <div className="pc-particular-online-main">
-        <ParticularTitle />
+        <ParticularTitle name={totalData && totalData.name} />
         <ParticularOnlineContent
           project_time_prices={totalData && totalData.project_time_prices}
         />
