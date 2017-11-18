@@ -69,6 +69,7 @@ export default class AllInfoAll extends React.Component {
                     read={data.click_rate}
                     reply={data.comments_count}
                     collection={data.save_user}
+                    img={data.img}
                   />
                 );
               }

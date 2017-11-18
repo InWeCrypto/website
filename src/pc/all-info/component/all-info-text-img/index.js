@@ -16,6 +16,7 @@ export default class AllInfoTextImg extends React.Component {
   }
   render() {
     let { allInfo } = this.state;
+    console.log(allInfo);
     return (
       <div className="pc-all-info-text-img">
         {allInfo &&
@@ -24,7 +25,7 @@ export default class AllInfoTextImg extends React.Component {
               <AllInfoHomePageTextImgCard
                 key={data.id.toString()}
                 id={data.id}
-                link={data.video}
+                link={data.img}
                 title={data.title}
                 content={data.content}
                 date={data.updated_at}
