@@ -35,24 +35,18 @@ export default class HomeHeaderNavList extends React.Component {
     let { classIco, classPrice, classBrowser, classInfo } = this.props;
     return (
       <div className="pc-home-header-nav-list">
-        <a
-          className={cls("nav-item", classIco)}
-          onClick={e => this.onClick(e)}
-          href="../../../../evaluating/"
-        >
+        <a className={cls("nav-item", classIco)} onClick={e => this.onClick(e)}>
           Ico评测
         </a>
         <a
           className={cls("nav-item", classPrice)}
           onClick={e => this.onClick(e)}
-          href="../../../../price-market/"
         >
           行情
         </a>
         <a
           className={cls("nav-item", classBrowser)}
           onClick={e => this.onClick(e)}
-          href="../../particular-online/"
         >
           浏览器
         </a>
@@ -60,6 +54,7 @@ export default class HomeHeaderNavList extends React.Component {
           className={cls("nav-item", classInfo)}
           onClick={e => this.onClick(e)}
           href="../../all-info/"
+          style={{ color: "#fff" }}
         >
           所有资讯
         </a>
@@ -70,7 +65,7 @@ export default class HomeHeaderNavList extends React.Component {
           <p>
             语言<span className="dropdown-icon" />
           </p>
-          <div
+          {/* <div
             className="nav-item-language-dropdown"
             style={{ display: show ? "block" : "none" }}
           >
@@ -78,7 +73,7 @@ export default class HomeHeaderNavList extends React.Component {
             <span className="item">中文</span>
             <span className="item item-active">英文</span>
             <span className="item">日文</span>
-          </div>
+          </div> */}
         </div>
       </div>
     );

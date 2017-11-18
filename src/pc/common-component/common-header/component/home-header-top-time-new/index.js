@@ -38,7 +38,7 @@ export default class HomeHeaderTopTimeNew extends React.Component {
       $ul.stop().animate({
         marginTop: -scrollHeight
       },
-      600,
+      1000,
       function() {
         $ul
           .css({
@@ -57,6 +57,7 @@ export default class HomeHeaderTopTimeNew extends React.Component {
   render() {
     let { priceData } = this.props;
     let { info } = this.state;
+    console.log(info);
     return (
       <div className="pc-home-header-top-time-new">
         <div className="new-pic">
@@ -68,7 +69,7 @@ export default class HomeHeaderTopTimeNew extends React.Component {
               info.map(item => {
                 return (
                   <li className="new-content-text" key={item.id.toString()}>
-                    {item.symbol} 实时价格 ${item.price_usd}
+                    {item.symbol} 实时价格 ${item.price}
                   </li>
                 );
               })}
