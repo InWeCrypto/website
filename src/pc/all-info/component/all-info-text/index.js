@@ -24,7 +24,7 @@ export default class AllInfoText extends React.Component {
               <AllInfoHomePageTextCard
                 key={data.id.toString()}
                 id={data.id}
-                content={data.content}
+                content={data.desc}
                 title={data.title}
                 date={data.updated_at}
                 read={data.click_rate}
