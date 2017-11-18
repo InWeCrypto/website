@@ -50,7 +50,7 @@ export default class ParticularProjectIntroduce extends React.Component {
               );
             })}
         </ul>
-        <iframe src={iframeUrl} className="introduce-text" />
+        {iframeUrl && <iframe src={iframeUrl} className="introduce-text" />}
       </div>
     );
   }
