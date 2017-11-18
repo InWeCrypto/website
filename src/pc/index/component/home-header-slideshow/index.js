@@ -19,6 +19,7 @@ export default class HomeHeaderSlideShow extends React.Component {
     };
 
     let { imgData } = this.props;
+    console.log(imgData);
     return (
       <div className="slide-wrap">
         <div className="pc-home-header-slide-show">
@@ -27,10 +28,7 @@ export default class HomeHeaderSlideShow extends React.Component {
               ? imgData.data.list.map(img => {
                   return (
                     <div key={img.id}>
-                      <img
-                        src={`${PORTOCAL}/${img.img}`}
-                        className="slide-page"
-                      />
+                      <img src={`${img.img}`} className="slide-page" />
                     </div>
                   );
                 })
