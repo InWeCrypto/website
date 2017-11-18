@@ -20,7 +20,8 @@ export default class HomeContent extends React.Component {
   }
   getMove(move) {
     this.setState({
-      move: move
+      move: move,
+      scrollLeft: move
     });
   }
   componentDidUpdate(nextP, nextS) {
@@ -28,13 +29,10 @@ export default class HomeContent extends React.Component {
       let li = this.refs.cardList.refs.list;
       $(li).animate(
         {
-          scrollLeft: nextS.move
+          scrollLeft: this.state.move
         },
         600
       );
-      this.setState({
-        scrollLeft: nextS.move
-      });
     }
   }
   render() {
