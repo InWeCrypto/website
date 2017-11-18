@@ -10,7 +10,6 @@ export default class HomeContentHeader extends React.Component {
     };
   }
   prevHandler = () => {
-    console.log(this.props);
     let { scrollLeft, listWidth } = this.props;
     let _arrowleft = this.state.arrowLeft;
     if (scrollLeft > 0) {
@@ -20,19 +19,18 @@ export default class HomeContentHeader extends React.Component {
         });
       } else {
         this.setState({
-          arrowLeft: _arrowleft - (listWidth - W)
+          arrowLeft: 0
         });
       }
+      this.props.getMove(this.state.arrowLeft);
     } else {
-      this.setState({
-        arrowLeft: 0
-      });
+      return;
     }
-    this.props.getMove(this.state.arrowLeft);
   };
 
   nextHandler = () => {
     let { scrollLeft, listWidth } = this.props;
+
     let _arrowleft = this.state.arrowLeft;
     if (scrollLeft < listWidth - W) {
       if (listWidth - W >= W) {
@@ -44,11 +42,17 @@ export default class HomeContentHeader extends React.Component {
           arrowLeft: _arrowleft + (listWidth - W)
         });
       }
-      this.props.getMove(this.state.arrowLeft);
     } else {
       return;
     }
   };
+
+  componentWillUpdate(nextP, nextS) {
+    console.log(nextS);
+    if (this.state.arrowLeft !== nextS.arrowLeft) {
+      this.props.getMove(nextS.arrowLeft);
+    }
+  }
 
   render() {
     let { scrollLeft, listWidth } = this.props;

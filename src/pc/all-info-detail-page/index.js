@@ -53,10 +53,10 @@ export default class AllInfoDetailPage extends React.Component {
   async componentDidMount() {
     let d = await getData(`${PORTOCAL}/article/${data.id}`);
     this.setState({
-      detailData: d
+      detailData: d.data
     });
     let p = this.refs.detail;
-    $(p).html(`${data.content}`);
+    $(p).html(`${this.state.detailData.content}`);
     console.log(this.refs.detail);
   }
 }
