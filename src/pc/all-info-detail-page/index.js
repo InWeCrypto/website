@@ -57,7 +57,6 @@ export default class AllInfoDetailPage extends React.Component {
     });
     let p = this.refs.detail;
     $(p).html(`${this.state.detailData.content}`);
-    console.log(this.refs.detail);
   }
 }
 

@@ -26,12 +26,9 @@ export default class HomeHeaderSlideShow extends React.Component {
             {imgData !== null
               ? imgData.data.list.map(img => {
                   return (
-                    <div key={img.id}>
-                      <img
-                        src={`${PORTOCAL}/${img.img}`}
-                        className="slide-page"
-                      />
-                    </div>
+                    <a className="slide-link" key={img.id} href={img.url}>
+                      <img src={`${img.img}`} className="slide-page" />
+                    </a>
                   );
                 })
               : null}

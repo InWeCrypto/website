@@ -48,7 +48,6 @@ export default class HomeContentHeader extends React.Component {
   };
 
   componentWillUpdate(nextP, nextS) {
-    console.log(nextS);
     if (this.state.arrowLeft !== nextS.arrowLeft) {
       this.props.getMove(nextS.arrowLeft);
     }

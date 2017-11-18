@@ -127,7 +127,7 @@ export default class HomeContentListItem extends React.Component {
                 </div>
               )}
               <div className="content-text">
-                {score && <div className="item-score">{score}</div>}
+                {/* {score && <div className="item-score">{score}</div>} */}
                 <h2>{name}</h2>
                 <p>{Text[descType]}</p>
                 {downloads && <button className="downloadBtn">DOWNLOAD</button>}

@@ -31,14 +31,14 @@ export default class HomeHeaderTopTimeNew extends React.Component {
     var timer = null;
     timer = setInterval(function() {
       scrollList($ul);
-    }, 1000);
+    }, 2000);
 
     function scrollList(obj) {
       var scrollHeight = $(".new-content li:first").height();
       $ul.stop().animate({
         marginTop: -scrollHeight
       },
-      600,
+      1000,
       function() {
         $ul
           .css({
@@ -68,7 +68,7 @@ export default class HomeHeaderTopTimeNew extends React.Component {
               info.map(item => {
                 return (
                   <li className="new-content-text" key={item.id.toString()}>
-                    {item.symbol} 实时价格 ${item.price_usd}
+                    {item.symbol} 实时价格 ${item.price}
                   </li>
                 );
               })}
