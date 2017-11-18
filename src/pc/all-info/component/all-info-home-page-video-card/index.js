@@ -25,7 +25,7 @@ export default class AllInfoHomePageVideoCard extends React.Component {
           <img className="video" src={img} />
           <div className="content">
             <h2>{title}</h2>
-            <div ref="text" />
+            <div className="video-card"> {content}</div>
             <AllInfoDetail
               className="add-detail"
               img_col={img_col}

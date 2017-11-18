@@ -1,4 +1,5 @@
 import React from "react";
+//import { PORTOCAL } from "../lib/app/js/env";
 import "./index.less";
 
 export default class HomeHeaderDynamicNewsContentText extends React.Component {
@@ -10,14 +11,15 @@ export default class HomeHeaderDynamicNewsContentText extends React.Component {
     };
   }
   render() {
-    let { title, content } = this.props;
+    let { title, content, url } = this.props;
     let t = title || this.state.title;
     let c = content || this.state.content;
+    console.log(this.props);
     return (
-      <div>
+      <a className="dynamic-link" href={url}>
         <h3>{t}</h3>
         <p className="dynamic-text">{c}</p>
-      </div>
+      </a>
     );
   }
 }

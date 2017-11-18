@@ -35,7 +35,7 @@ export default class AllInfoAll extends React.Component {
                   <AllInfoHomePageTextCard
                     key={data.id.toString()}
                     id={data.id}
-                    content={data.content}
+                    content={data.desc}
                     title={data.title}
                     date={data.updated_at}
                     read={data.click_rate}
@@ -50,7 +50,7 @@ export default class AllInfoAll extends React.Component {
                     id={data.id}
                     link={data.img}
                     title={data.title}
-                    content={data.content}
+                    content={data.desc}
                     date={data.updated_at}
                     read={data.click_rate}
                     reply={data.comments_count}
@@ -64,7 +64,7 @@ export default class AllInfoAll extends React.Component {
                     id={data.id}
                     link={data.video}
                     title={data.title}
-                    content={data.content}
+                    content={data.desc}
                     date={data.updated_at}
                     read={data.click_rate}
                     reply={data.comments_count}
