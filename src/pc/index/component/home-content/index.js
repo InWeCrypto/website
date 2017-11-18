@@ -23,7 +23,7 @@ export default class HomeContent extends React.Component {
       move: move
     });
   }
-  componentWillUpdate(nextP, nextS) {
+  componentDidUpdate(nextP, nextS) {
     if (this.state.move !== nextS.move) {
       let li = this.refs.cardList.refs.list;
       $(li).animate(
