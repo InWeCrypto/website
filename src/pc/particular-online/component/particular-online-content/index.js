@@ -160,7 +160,7 @@ export default class ParticularOnlineContent extends React.Component {
         {
           left: "10%",
           right: "8%",
-          height: "40%"
+          height: "45%"
         },
         {
           left: "10%",
@@ -420,24 +420,25 @@ export default class ParticularOnlineContent extends React.Component {
   getKlineData(nextState) {
     let now = parseInt(new Date().getTime() / 1000);
     let start;
-    let day = 24 * 60 * 80;
+    let day = 24 * 60 * 60;
     switch (nextState.timeIndex) {
       case 0:
-        start = now - 5 * 60 * 400;
+        start = now - 5 * 60 * 1000;
         break;
       case 1:
-        start = now - 6 * 60 * 60 * 400;
+        start = now - 6 * 60 * 60 * 1000;
         break;
       case 2:
-        start = now - day * 1 * 400;
+        start = now - day * 1 * 1000;
         break;
       case 3:
-        start = now - day * 7 * 400;
+        start = now - day * 7 * 1000;
         break;
       case 4:
-        start = now - day * 30 * 400;
+        start = now - day * 30 * 1000;
         break;
     }
+    start = start <= 0 ? 0 : start;
     getData(
       `${PORTOCAL}/${nextState.currUrl[nextState.curType]
         .k_line_data_url}/${start}/${now}/10`

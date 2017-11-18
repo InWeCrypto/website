@@ -91,6 +91,7 @@ export default class ParticularOnlineMarket extends Component {
                     <li
                       onClick={this.choiceHandler.bind(this)}
                       className="market-drop-item"
+                      key={index}
                     >
                       {item.en_name}
                     </li>
