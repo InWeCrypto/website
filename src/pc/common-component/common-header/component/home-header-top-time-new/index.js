@@ -31,7 +31,7 @@ export default class HomeHeaderTopTimeNew extends React.Component {
     var timer = null;
     timer = setInterval(function() {
       scrollList($ul);
-    }, 1000);
+    }, 2000);
 
     function scrollList(obj) {
       var scrollHeight = $(".new-content li:first").height();
@@ -57,7 +57,6 @@ export default class HomeHeaderTopTimeNew extends React.Component {
   render() {
     let { priceData } = this.props;
     let { info } = this.state;
-    console.log(info);
     return (
       <div className="pc-home-header-top-time-new">
         <div className="new-pic">

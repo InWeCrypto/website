@@ -16,7 +16,6 @@ export default class AllInfoTextImg extends React.Component {
   }
   render() {
     let { allInfo } = this.state;
-    console.log(allInfo);
     return (
       <div className="pc-all-info-text-img">
         {allInfo &&

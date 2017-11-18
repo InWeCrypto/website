@@ -11,11 +11,15 @@ export default class HomeFooterContact extends React.Component {
         <h4 className="contact-title">联系我们</h4>
         <div className="contact-item">
           <img className="contact-pic" src={contactPic} />
-          <span className="contact-text">https://t.me/inwecrypto</span>
+          <a href="https://t.me/inwecrypto" className="contact-text">
+            https://t.me/inwecrypto
+          </a>
         </div>
         <div className="contact-item">
           <img className="contact-pic" src={emailPic} />
-          <span className="contact-text">support@inwecrypto.com</span>
+          <a href="support@inwecrypto.com" className="contact-text">
+            support@inwecrypto.com
+          </a>
         </div>
         <div className="contact-item">
           <img

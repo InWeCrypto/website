@@ -95,7 +95,6 @@ export default class HomeContentList extends React.Component {
 
   render() {
     if (this.props.project) {
-      //console.log(this.props.project);
       // }
       // if (this.state.listArr && this.state.listArr.length > 0) {
       let allData = sortProject(this.props.project.data);

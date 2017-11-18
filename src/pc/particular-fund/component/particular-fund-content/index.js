@@ -9,7 +9,6 @@ import "./index.less";
 export default class ParticularFundContent extends React.Component {
   render() {
     let { contentData } = this.props;
-    console.log(contentData);
     return (
       <div className="pc-particular-fund-content">
         <ParticularFundCurrent
