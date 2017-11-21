@@ -19,7 +19,6 @@ export default class HomeHeaderDynamicNewsContent extends React.Component {
       slidesToShow: 1,
       slidesToScroll: 1
     };
-    console.log(newData);
     return (
       <div className="pc-home-header-dynamic-news-content">
         <div className="news-arrow-down">

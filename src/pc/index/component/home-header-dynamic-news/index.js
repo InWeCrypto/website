@@ -14,7 +14,7 @@ export default class HomeHeaderDynamicNews extends React.Component {
 
   render() {
     return (
-      <div className="pc-home-header-dynamic-news">
+      <div className="pc-home-header-dynamic-news" ref="news">
         {/* <div className="news-content-before" /> */}
         <div className="news-content">
           <h2 className="new-title">NEWS</h2>

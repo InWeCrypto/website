@@ -27,6 +27,7 @@ export default class HomeContentList extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if (!nextProps.project) return;
     this.setState({
       listArr: nextProps.project.data
     });
@@ -99,7 +100,6 @@ export default class HomeContentList extends React.Component {
       // if (this.state.listArr && this.state.listArr.length > 0) {
       let allData = sortProject(this.props.project.data);
       let that = this;
-      console.log(allData);
       return (
         <div ref="list" className="pc-home-content-list">
           <div className="list-even">

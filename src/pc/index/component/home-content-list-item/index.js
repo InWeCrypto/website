@@ -97,22 +97,22 @@ export default class HomeContentListItem extends React.Component {
         }}
       >
         {carousels && (
-          <a href={downloads ? downloads[0].url : link}>
-            <div className="project-slide">
-              <Slider {...settings}>
-                {carousels.map(item => {
-                  return (
-                    <div key={item.id}>
-                      <a className="item-link" href={item.url}>
-                        <img className="slide-page" src={item.img} />
-                      </a>
-                      <div className="slideControl">{item.title}</div>
-                    </div>
-                  );
-                })}
-              </Slider>
-            </div>
-          </a>
+          //  <a href={downloads ? downloads[0].url : link}>
+          <div className="project-slide">
+            <Slider {...settings}>
+              {carousels.map(item => {
+                return (
+                  <div key={item.id}>
+                    <a className="item-link" href={item.url}>
+                      <img className="slide-page" src={item.img} />
+                    </a>
+                    <div className="slideControl">{item.title}</div>
+                  </div>
+                );
+              })}
+            </Slider>
+          </div>
+          //  </a>
         )}
         {!carousels && (
           <a href={downloads ? downloads[0].url : link}>
