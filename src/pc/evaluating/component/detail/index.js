@@ -58,7 +58,11 @@ export default class Detail extends Component {
               </div>
               <div className="box1-middle">
                 <div className="risk-level">
-                  风险等级 : <span className="risk-level-color1" />{" "}
+                  风险等级 :{" "}
+                  <span
+                    className="risk-level-color1"
+                    style={{ background: cont.risk_level_color }}
+                  />{" "}
                   {cont.risk_level_name}
                 </div>
               </div>
@@ -74,9 +78,11 @@ export default class Detail extends Component {
               desc={cont.desc}
               website={cont.website}
             />
-            <IcoPublish />
-            <Strcture />
-            <ProjectAnaly />
+            <IcoPublish ico_assess_issue_info={cont.ico_assess_issue_info} />
+            <Strcture ico_assess_structure={cont.ico_assess_structure} />
+            <ProjectAnaly
+              ico_assess_project_analyse={cont.ico_assess_project_analyse}
+            />
             {/* {iframeUrl && <iframe src={iframeUrl} className="introduce-text" />} */}
             <iframe src="" className="introduce-text" />
           </div>

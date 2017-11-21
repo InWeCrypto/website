@@ -9,6 +9,13 @@ export default class Strcture extends Component {
   componentDidMount() {
     let strcture = this.refs.strcture;
     let myChart = echarts.init(strcture);
+    let strctureData = this.props.ico_assess_structure;
+    let value = [];
+    let theColor = [];
+    strctureData.map(item => {
+      value.push({ value: item.percentage });
+      theColor.push(item.color_value);
+    });
 
     let option = {
       title: {
@@ -31,13 +38,8 @@ export default class Strcture extends Component {
           type: "pie",
           radius: "85%",
           center: ["30%", "50%"],
-          data: [
-            { value: 335 },
-            { value: 310 },
-            { value: 234 },
-            { value: 135 },
-            { value: 1548 }
-          ],
+          data: value,
+          color: theColor,
           labelLine: {
             normal: {
               show: false
@@ -56,14 +58,19 @@ export default class Strcture extends Component {
     myChart.setOption(option);
   }
   render() {
-    // let { intro } = this.props;
+    let { ico_assess_structure } = this.props;
 
     return (
       <div className="strcture">
         <h2>结构</h2>
         <div className="strcture-chart" ref="strcture" />
         <div className="strcture-detail">
-          <p>粉色：50%，5亿用于公开发行</p>
+          {ico_assess_structure &&
+            ico_assess_structure.map(item => {
+              return (
+                <p>{`${item.color_name} : ${item.percentage}, ${item.desc}`}</p>
+              );
+            })}
         </div>
       </div>
     );

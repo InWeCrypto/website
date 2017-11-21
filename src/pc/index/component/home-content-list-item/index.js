@@ -103,7 +103,9 @@ export default class HomeContentListItem extends React.Component {
                 {carousels.map(item => {
                   return (
                     <div key={item.id}>
-                      <img className="slide-page" src={item.img} />
+                      <a className="item-link" href={item.url}>
+                        <img className="slide-page" src={item.img} />
+                      </a>
                       <div className="slideControl">{item.title}</div>
                     </div>
                   );

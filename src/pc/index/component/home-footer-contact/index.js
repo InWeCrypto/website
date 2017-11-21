@@ -21,7 +21,7 @@ export default class HomeFooterContact extends React.Component {
             support@inwecrypto.com
           </a>
         </div>
-        <div className="contact-item">
+        {/* <div className="contact-item">
           <img
             className="contact-pic"
             src={locationPic}
@@ -31,7 +31,7 @@ export default class HomeFooterContact extends React.Component {
             上海市杨浦区政学路77号Innospace 206 Room 206 No.77 Zhengxue Rd, Yangpu Dis,
             Shanghai
           </span>
-        </div>
+        </div> */}
       </div>
     );
   }
