@@ -22,7 +22,7 @@ export default class ProjectAnaly extends Component {
             {ico_assess_project_analyse &&
               ico_assess_project_analyse.map(item => {
                 return (
-                  <tr>
+                  <tr key={item.id}>
                     <td>{item.name}</td>
                     <td>{item.desc}</td>
                     <td style={{ borderRight: 0 }}>{item.score}</td>

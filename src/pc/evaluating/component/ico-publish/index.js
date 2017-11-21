@@ -6,37 +6,12 @@ import { PORTOCAL } from "../../../lib/app/js/env";
 
 export default class IcoPublish extends Component {
   render() {
+    let { unit } = this.props;
     let info = this.props.ico_assess_issue_info;
     return (
       <div>
         <div className="ico-publish">
           <h2 className="ico-publish-title">ICO发行情况</h2>
-          {/* <ul className="ico-publish-table">
-            <li className="ico-publish-item">
-              <h4>众筹时间</h4>
-              <p>{info.create}</p>
-            </li>
-            <li className="ico-publish-item">
-              <h4>总发行量</h4>
-              <p>10亿KNC</p>
-            </li>
-            <li className="ico-publish-item">
-              <h4>ICO量</h4>
-              <p />
-            </li>
-            <li className="ico-publish-item">
-              <h4>接受币种</h4>
-              <p />
-            </li>
-            <li className="ico-publish-item">
-              <h4>众筹金额</h4>
-              <p />
-            </li>
-            <li className="ico-publish-item">
-              <h4>价格</h4>
-              <p />
-            </li>
-          </ul> */}
           <table>
             <thead>
               <tr>
@@ -53,10 +28,17 @@ export default class IcoPublish extends Component {
               {info &&
                 info.map(item => {
                   return (
-                    <tr>
-                      {/* <td>{item.name}</td>
-                      <td>{item.desc}</td>
-                      <td style={{ borderRight: 0 }}>{item.score}</td> */}
+                    <tr key={item.id}>
+                      <td>{`${item.crowdfunding_start_at.substring(
+                        0,
+                        10
+                      )}-${item.crowdfunding_end_at.substring(5, 10)}`}</td>
+                      <td>{`${item.ico_circulation / 100000000}亿${unit}`}</td>
+                      <td>{`${item.ico_amount / 100000000}亿${unit}`}</td>
+                      <td>{item.ico_accept}</td>
+                      <td>{`${item.ico_crowfunding_amount /
+                        10000}万${item.ico_crowfunding_amount_unit}等值`}</td>
+                      <td>{item.ico_price}</td>
                     </tr>
                   );
                 })}

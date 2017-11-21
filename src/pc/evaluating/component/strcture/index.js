@@ -37,7 +37,7 @@ export default class Strcture extends Component {
           //name: "访问来源",
           type: "pie",
           radius: "85%",
-          center: ["30%", "50%"],
+          center: ["40%", "50%"],
           data: value,
           color: theColor,
           labelLine: {
@@ -68,7 +68,9 @@ export default class Strcture extends Component {
           {ico_assess_structure &&
             ico_assess_structure.map(item => {
               return (
-                <p>{`${item.color_name} : ${item.percentage}, ${item.desc}`}</p>
+                <p
+                  key={item.id}
+                >{`${item.color_name} : ${item.percentage}% , ${item.desc}`}</p>
               );
             })}
         </div>

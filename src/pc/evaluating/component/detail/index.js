@@ -78,13 +78,16 @@ export default class Detail extends Component {
               desc={cont.desc}
               website={cont.website}
             />
-            <IcoPublish ico_assess_issue_info={cont.ico_assess_issue_info} />
+            <IcoPublish
+              ico_assess_issue_info={cont.ico_assess_issue_info}
+              unit={cont.ico.unit}
+            />
             <Strcture ico_assess_structure={cont.ico_assess_structure} />
             <ProjectAnaly
               ico_assess_project_analyse={cont.ico_assess_project_analyse}
             />
             {/* {iframeUrl && <iframe src={iframeUrl} className="introduce-text" />} */}
-            <iframe src="" className="introduce-text" />
+            {/* <iframe src="" className="introduce-text" /> */}
           </div>
         )}
         {!cont && <div style={{ padding: "200px 0" }}>无法查询到数据</div>}
