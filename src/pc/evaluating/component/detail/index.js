@@ -53,7 +53,7 @@ export default class Detail extends Component {
             <div className="detail-time">更新于：{cont.created_at}</div>
             <div className="detail-box1">
               <div className="box1-left">
-                <div className="circle">7.9</div>
+                <div className="circle">{cont.ico_score}</div>
                 <div className="state">上线交易中</div>
               </div>
               <div className="box1-middle">
