@@ -58,10 +58,8 @@ export default class Detail extends Component {
               </div>
               <div className="box1-middle">
                 <div className="risk-level">
-                  风险等级 : <span className="risk-level-color1" /> 极高
-                </div>
-                <div className="risk-level">
-                  风险等级 : <span className="risk-level-color2" /> 中
+                  风险等级 : <span className="risk-level-color1" />{" "}
+                  {cont.risk_level_name}
                 </div>
               </div>
               <div className="box1-right">
