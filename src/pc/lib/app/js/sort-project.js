@@ -25,8 +25,7 @@ function Node(data) {
 }
 
 // 查找节点
-function find(data) {
-  let cur = this.head;
+function find(data, cur) {
   while (!cur.need.includes(data.grid_type)) {
     if (cur.next === null) {
       return this.insert(cur, data);
@@ -45,7 +44,7 @@ function find(data) {
     if (cur.next === null) {
       return this.insert(cur, data);
     } else {
-      cur = cur.next;
+      this.find(data, cur.next);
     }
   }
   // 如果前一个盒子是type1,那么第二个盒子不能是type3(横方块)
@@ -53,7 +52,7 @@ function find(data) {
     if (cur.next === null) {
       return this.insert(cur, data);
     } else {
-      cur = cur.next;
+      this.find(data, cur.next);
     }
   }
   let size = cur.size;
@@ -72,7 +71,7 @@ function find(data) {
       cur.need.splice(index, 1);
     }
   } else {
-    cur.need = [];
+    return this.insert(cur, data);
   }
 }
 
@@ -185,7 +184,7 @@ function list(data) {
   let newList = new List(data[0]);
   newList.head.need = newList.getNeed(newList.head.data);
   for (var i = 1; i < data.length; i++) {
-    newList.find(data[i]);
+    newList.find(data[i], newList.head);
   }
   let half = Math.ceil(newList.node / 2);
   newList.position(half);
