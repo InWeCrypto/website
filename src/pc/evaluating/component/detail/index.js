@@ -60,16 +60,20 @@ export default class Detail extends Component {
                 <div className="risk-level">
                   风险等级 :{" "}
                   <span
-                    className="risk-level-color1"
+                    className="risk-level-color"
                     style={{ background: cont.risk_level_color }}
                   />{" "}
                   {cont.risk_level_name}
                 </div>
               </div>
               <div className="box1-right">
-                <span className="right-item">山鸡山鸡山鸡</span>
-                <br />
-                <span className="right-item">山鸡山鸡山鸡</span>
+                {cont.tags.map(item => {
+                  return (
+                    <span key={item.id} className="right-item">
+                      {item.tag_info.name}
+                    </span>
+                  );
+                })}
               </div>
             </div>
             <p className="remind">郑重声明：所有 ICO 都有归 ０ 的风险，所有信息仅供参考，不构成任何投资发起</p>

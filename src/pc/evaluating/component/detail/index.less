@@ -63,18 +63,12 @@
       .risk-level {
         text-align: center;
       }
-      .risk-level-color1,
-      .risk-level-color2 {
+      .risk-level-color {
         display: inline-block;
         width: 20px;
         height: 20px;
+        vertical-align: middle;
       }
-      // .risk-level-color1 {
-      //   background: #ff3232;
-      // }
-      // .risk-level-color2 {
-      //   background: #33ffcc;
-      // }
     }
     .box1-right {
       width: 180px;
@@ -83,11 +77,13 @@
       height: 90px;
       text-align: center;
       .right-item {
-        display: inline-block;
+        display: block;
+        width: fit-content;
         padding: 5px 8px;
         border-radius: 15px;
         border: 1px solid #fff;
-        margin: 5px 0;
+        margin: 0 auto;
+        margin-top: 5px;
       }
     }
   }
