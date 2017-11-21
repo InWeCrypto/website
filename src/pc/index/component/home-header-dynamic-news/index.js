@@ -15,12 +15,12 @@ export default class HomeHeaderDynamicNews extends React.Component {
   render() {
     return (
       <div className="pc-home-header-dynamic-news">
-        <div className="news-content-before" />
+        {/* <div className="news-content-before" /> */}
         <div className="news-content">
           <h2 className="new-title">NEWS</h2>
           <HomeHeaderDynamicNewsContent newData={this.state.news} />
         </div>
-        <div className="news-content-after" />
+        {/* <div className="news-content-after" /> */}
       </div>
     );
   }
