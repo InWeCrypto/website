@@ -49,7 +49,7 @@ export default class List extends Component {
                 key="index"
                 className="list-item"
               >
-                <img className="list-img" src="" />
+                <img className="list-img" src={item.img} />
                 <div className="list-info">
                   <h3 className="list-title">{item.title}</h3>
                   <div className="list-t">目前状态：{item.assess_status}</div>

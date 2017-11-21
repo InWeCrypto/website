@@ -14,7 +14,6 @@ export default class HomeHeaderDynamicNewsContentText extends React.Component {
     let { title, content, url } = this.props;
     let t = title || this.state.title;
     let c = content || this.state.content;
-    console.log(this.props);
     return (
       <a className="dynamic-link" href={url}>
         <h3>{t}</h3>
