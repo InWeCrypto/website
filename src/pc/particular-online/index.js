@@ -25,7 +25,10 @@ export default class ParticularOnline extends React.Component {
   render() {
     return (
       <div className="pc-particular-online">
-        <CommonHeader classInfo="nav-item-active" />
+        <CommonHeader
+          classInfo="nav-item-active"
+          className="online-commonn-header-cover"
+        />
         <div className="page-wrap">
           <div className="content">
             <ParticularOnlineMain totalData={this.state.theProject} />

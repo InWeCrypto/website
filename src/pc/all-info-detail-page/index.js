@@ -25,26 +25,28 @@ export default class AllInfoDetailPage extends React.Component {
   }
   render() {
     let { detailData } = this.state;
-
+    console.log(detailData);
     return (
       <div className="pc-all-info-detail-page">
         <CommonHeader classInfo="nav-item-active" />
         <div className="page-wrap">
-          <div className="content">
-            <h2>{data.title}</h2>
-            <AllInfoDetail
-              img_col={img_col}
-              img_no_col={img_no_col}
-              className="reply-detail"
-              date={data.date}
-              read={data.read}
-              reply={data.reply}
-            />
-            <div ref="detail" className="detail-text" />
-            <div className="chat">
-              <a />
+          {detailData && (
+            <div className="content">
+              <h2>{detailData.title}</h2>
+              <AllInfoDetail
+                img_col={img_col}
+                img_no_col={img_no_col}
+                className="reply-detail"
+                date={detailData.date}
+                read={detailData.read}
+                reply={detailData.reply}
+              />
+              <div ref="detail" className="detail-text" />
+              <div className="chat">
+                <a />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     );

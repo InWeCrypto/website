@@ -5,6 +5,9 @@ import HomeHeaderDynamicNews from "../home-header-dynamic-news/index";
 
 import { getData } from "../../../lib/app/js/app";
 import { PORTOCAL } from "../../../lib/app/js/env";
+
+import "./index.less";
+
 export default class HomeHeader extends React.Component {
   constructor(props) {
     super(props);
@@ -15,7 +18,7 @@ export default class HomeHeader extends React.Component {
   render() {
     return (
       <div className="pc-home-header">
-        <CommonHeader />
+        <CommonHeader className="home-common-header-cover" />
         {/* <HomeHeaderSlideShow imgData={this.state.imgData} /> */}
         {/* <HomeHeaderDynamicNews /> */}
       </div>
