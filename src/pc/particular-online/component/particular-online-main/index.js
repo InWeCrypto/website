@@ -21,19 +21,22 @@ export default class ParticularOnlineMain extends React.Component {
     let { totalData } = this.props;
     return (
       <div className="pc-particular-online-main">
-        {totalData && (
-          <div>
-            <ParticularTitle name={totalData.name} id={totalData.id} />
-            <ParticularOnlineContent
-              project_time_prices={totalData.project_time_prices}
-            />
-            <ParticularOnlineMarket
-              project_markets={totalData.project_markets}
-            />
-            <ParticularProjectIntroduce data={totalData.project_desc} />
-            <ParticularNews projectId={totalData.id} />
-          </div>
-        )}
+        <div>
+          <ParticularTitle
+            name={totalData && totalData.name}
+            id={totalData && totalData.id}
+          />
+          <ParticularOnlineContent
+            project_time_prices={totalData && totalData.project_time_prices}
+          />
+          <ParticularOnlineMarket
+            project_markets={totalData && totalData.project_markets}
+          />
+          <ParticularProjectIntroduce
+            data={totalData && totalData.project_desc}
+          />
+          <ParticularNews projectId={totalData && totalData.id} />
+        </div>
       </div>
     );
   }

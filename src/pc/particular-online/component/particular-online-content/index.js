@@ -45,7 +45,6 @@ export default class ParticularOnlineContent extends React.Component {
     var downColor = "rgba(0,218,60,0.5)";
     var downBorderColor = "#008F28";
 
-    // 数据意义：开盘(open)，收盘(close)，最低(lowest)，最高(highest)
     var data = splitData(
       nextState.optionData
         ? JSON.parse(JSON.stringify(nextState.optionData))
@@ -444,9 +443,11 @@ export default class ParticularOnlineContent extends React.Component {
         break;
     }
     start = start <= 0 ? 0 : start;
+    start = start.length < 10 ? 0 : start;
     getData(
-      `${PORTOCAL}/${nextState.currUrl[nextState.curType]
-        .k_line_data_url}/${start}/${now}/10`
+      `${PORTOCAL}/${nextState.currUrl[nextState.curType].k_line_data_url}/${
+        start
+      }/${now}/10`
     )
       .then(data => {
         if (data.code === 4000) {
