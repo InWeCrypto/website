@@ -10,7 +10,10 @@ export default class ParticularOnlineMarket extends Component {
     super(props);
     this.state = {
       show: false,
-      choice: props.project_markets ? props.project_markets[0].en_name : null,
+      choice:
+        props.project_markets && props.project_markets.length > 0
+          ? props.project_markets[0].en_name
+          : null,
       list: {},
       project_markets: props.project_markets ? props.project_markets : null,
       isLoaded: false
@@ -73,7 +76,7 @@ export default class ParticularOnlineMarket extends Component {
 
   render() {
     let { project_markets } = this.props;
-    console.log(project_markets);
+    console.log("this.props");
     return (
       <div>
         {project_markets && (
@@ -88,6 +91,7 @@ export default class ParticularOnlineMarket extends Component {
               style={{ display: this.state.show ? "flex" : "none" }}
             >
               {project_markets &&
+                project_markets.length > 0 &&
                 project_markets.map((item, index) => {
                   return (
                     <li

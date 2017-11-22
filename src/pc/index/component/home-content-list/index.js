@@ -18,6 +18,10 @@ export default class HomeContentList extends React.Component {
       newData: []
     };
   }
+  // componentDidMount() {
+  //   let data = this.props.project;
+  //   console.log(data);
+  // }
   componentWillUpdate(nextProps, nextState) {
     if (this.state.newData !== nextState.newData) {
       this.setState({
@@ -31,6 +35,15 @@ export default class HomeContentList extends React.Component {
     this.setState({
       listArr: nextProps.project.data
     });
+    let data = nextProps.project.data;
+    let projectD = [];
+    data.map(item => {
+      if (item.type >= 5) {
+        projectD.push({ id: item.id, type: item.type });
+      }
+    });
+    sessionStorage.setItem("project", JSON.stringify(projectD));
+    console.log(projectD);
   }
   componentDidUpdate() {
     let that = this;
