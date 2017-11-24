@@ -11,6 +11,9 @@ import { PORTOCAL } from "../lib/app/js/env";
 import img_col from "../lib/app/img/all-info-detail-page_icon_like.png";
 import img_no_col from "../lib/app/img/all-info-detail-page_icon_unlike.png";
 
+import pace from "../lib/app/js/pace/pace.js";
+import "../lib/app/less/pace.less";
+
 import "./index.less";
 let search = window.location.search;
 let id = search.split("?")[1];
@@ -53,10 +56,12 @@ export default class AllInfoDetailPage extends React.Component {
   }
 
   async componentDidMount() {
+    pace.start();
     let d = await getData(`${PORTOCAL}/article/${data.id}`);
     this.setState({
       detailData: d.data
     });
+    // pace.off();
     let p = this.refs.detail;
     $(p).html(`${this.state.detailData.content}`);
   }

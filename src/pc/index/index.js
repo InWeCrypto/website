@@ -10,9 +10,15 @@ import HomeFooter from "./component/home-footer/index";
 import HomeCopyRight from "./component/home-copy-right/index";
 import HomeHeaderDynamicNews from "./component/home-header-dynamic-news/index";
 
+import pace from "../lib/app/js/pace/pace.js";
+import "../lib/app/less/pace.less";
+
 import "./index.less";
 
 export default class Home extends React.Component {
+  componentWillMount() {
+    pace.start();
+  }
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
   }
@@ -23,8 +29,6 @@ export default class Home extends React.Component {
     let offsetTop = fixD.offsetTop;
     let screenH = window.innerHeight;
     let diff = offsetTop - screenH + 100;
-    console.log(diff);
-    console.log(scrollT);
     if (scrollT >= diff) {
       $(dynamicNews).css("position", "static");
     } else {
@@ -33,7 +37,6 @@ export default class Home extends React.Component {
   };
   render() {
     const history = createBrowserHistory();
-    //  console.log(this.state.theState);
     return (
       <div className="home">
         <HomeHeader />

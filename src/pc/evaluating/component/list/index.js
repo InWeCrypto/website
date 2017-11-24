@@ -4,6 +4,9 @@ import ReactDOM from "react-dom";
 import { getData } from "../../../lib/app/js/app";
 import { PORTOCAL } from "../../../lib/app/js/env";
 
+import pace from "../../../lib/app/js/pace/pace.js";
+import "../../../lib/app/less/pace.less";
+
 import { Link } from "react-router-dom";
 
 export default class List extends Component {
@@ -14,13 +17,16 @@ export default class List extends Component {
     };
   }
   getListData() {
+    pace.start();
     getData(`${PORTOCAL}/article/ico`)
       .then(data => {
         if (data.code === 4000) {
           this.setState({
             list: [...data.data]
           });
+          // pace.off();
         } else {
+          //  pace.off();
           throw new Error(data.msg);
         }
       })

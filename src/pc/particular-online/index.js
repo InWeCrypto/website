@@ -41,15 +41,14 @@ export default class ParticularOnline extends React.Component {
   }
   componentDidMount() {
     pace.start();
-    console.log(pace);
     getData(`${PORTOCAL}/project/${projectId}`).then(data => {
       if (data.code === 4000) {
         this.setState({
           theProject: data.data
         });
-        pace.off();
+        //  pace.off();
       } else {
-        pace.off();
+        //  pace.off();
         throw new Error(data.msg);
       }
     });
