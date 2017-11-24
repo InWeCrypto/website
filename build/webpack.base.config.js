@@ -23,7 +23,8 @@ var webpackConfig = {
   resolve: {
     alias: {
       src: path.resolve(__dirname, "../src/"),
-      app: path.resolve(__dirname, "../src/lib/app/")
+      app: path.resolve(__dirname, "../src/lib/app/"),
+      pace: path.resolve(__dirname, "../src/pc/lib/app/js/pace/")
     }
   },
   module: {
