@@ -16,10 +16,8 @@ import "../lib/app/less/pace.less";
 import "./index.less";
 
 export default class Home extends React.Component {
-  componentWillMount() {
-    pace.start();
-  }
   componentDidMount() {
+    pace.start();
     window.addEventListener("scroll", this.handleScroll);
   }
   handleScroll = e => {

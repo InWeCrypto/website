@@ -84,8 +84,9 @@ export default class HomeContentListItem extends React.Component {
     }
     return (
       <div
-        onMouseOver={this.mouseoverHandler}
-        onMouseOut={this.mouseoutHandler}
+        // 禁止project卡片旋转
+        // onMouseOver={this.mouseoverHandler}
+        // onMouseOut={this.mouseoutHandler}
         ref="item"
         className="pc-home-content-list-item"
         data-id={id}
