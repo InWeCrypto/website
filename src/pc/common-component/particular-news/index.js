@@ -121,7 +121,7 @@ export default class ParticularNews extends React.Component {
                           </div>
                           <div className="news-content">
                             <h2>{item.title}</h2>
-                            <p>{item.content}</p>
+                            <p>{item.desc}</p>
                             <p>{item.created_at}</p>
                           </div>
                           <a
@@ -155,7 +155,7 @@ export default class ParticularNews extends React.Component {
                           </div>
                           <div className="news-content">
                             <h2>{item.title}</h2>
-                            <p>{item.content}</p>
+                            <p>{item.desc}</p>
                             <p>{item.created_at}</p>
                           </div>
                           <a
