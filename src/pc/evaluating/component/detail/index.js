@@ -76,7 +76,10 @@ export default class Detail extends Component {
                 })}
               </div>
             </div>
-            <p className="remind">郑重声明：所有 ICO 都有归 ０ 的风险，所有信息仅供参考，不构成任何投资发起</p>
+            <p className="remind">
+              郑重声明：所有 ICO 都有归 ０
+              的风险，所有信息仅供参考，不构成任何投资发起
+            </p>
             <ProjectIntro
               img={cont.img}
               desc={cont.desc}
@@ -89,6 +92,7 @@ export default class Detail extends Component {
             <Strcture ico_assess_structure={cont.ico_assess_structure} />
             <ProjectAnaly
               ico_assess_project_analyse={cont.ico_assess_project_analyse}
+              white_paper_url={cont.white_paper_url}
             />
             {/* {iframeUrl && <iframe src={iframeUrl} className="introduce-text" />} */}
             {/* <iframe src="" className="introduce-text" /> */}

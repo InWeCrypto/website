@@ -6,7 +6,7 @@ import { PORTOCAL } from "../../../lib/app/js/env";
 
 export default class ProjectAnaly extends Component {
   render() {
-    let { ico_assess_project_analyse } = this.props;
+    let { ico_assess_project_analyse, white_paper_url } = this.props;
     return (
       <div className="project-analy">
         <h2 className="project-analy-title">项目分数分析</h2>
@@ -31,7 +31,12 @@ export default class ProjectAnaly extends Component {
               })}
           </tbody>
         </table>
-        <p className="analy-remind">注：分数由项目白皮书以及整体规划评估而得出，只做投资参考。</p>
+        <p className="analy-remind">
+          注：分数由项目白皮书以及整体规划评估而得出，只做投资参考。
+        </p>
+        <a href={white_paper_url} className="white-paper">
+          白皮书
+        </a>
       </div>
     );
   }
