@@ -23,8 +23,8 @@ export default class HomeHeaderTopTimeNew extends React.Component {
       this.setState({
         info: arr
       });
+      console.log(this.state.info);
     });
-    // console.log(this.state.info);
   }
   componentDidMount() {
     let $ul = $(".new-content");
@@ -35,18 +35,20 @@ export default class HomeHeaderTopTimeNew extends React.Component {
 
     function scrollList(obj) {
       var scrollHeight = $(".new-content li:first").height();
-      $ul.stop().animate({
-        marginTop: -scrollHeight
-      },
-      1000,
-      function() {
-        $ul
-          .css({
-            marginTop: 0
-          })
-          .find("li:first")
-          .appendTo($ul);
-      });
+      $ul.stop().animate(
+        {
+          marginTop: -scrollHeight
+        },
+        1000,
+        function() {
+          $ul
+            .css({
+              marginTop: 0
+            })
+            .find("li:first")
+            .appendTo($ul);
+        }
+      );
     }
   }
 
