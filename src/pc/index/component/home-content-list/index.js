@@ -141,6 +141,7 @@ export default class HomeContentList extends React.Component {
                             score={item[0].score}
                             downloads={item[0].downloads}
                             carousels={item[0].carousels}
+                            videos={item[0].videos}
                           />
                         );
                       })}
@@ -174,6 +175,7 @@ export default class HomeContentList extends React.Component {
                             score={item[0].score}
                             downloads={item[0].downloads}
                             carousels={item[0].carousels}
+                            videos={item[0].videos}
                             descType={item[0].type}
                           />
                         );
