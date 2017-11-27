@@ -445,9 +445,7 @@ export default class ParticularOnlineContent extends React.Component {
     start = start <= 0 ? 0 : start;
     start = start.length < 10 ? 0 : start;
     getData(
-      `${PORTOCAL}/${nextState.currUrl[nextState.curType].k_line_data_url}/${
-        start
-      }/${now}/10`
+      `${PORTOCAL}/${nextState.currUrl[nextState.curType].k_line_data_url}`
     )
       .then(data => {
         if (data.code === 4000) {
