@@ -232,7 +232,7 @@ export default class ParticularOnlineContent extends React.Component {
         {
           type: "inside",
           xAxisIndex: [0, 1],
-          start: 0,
+          start: 70,
           end: 100
         },
         {
@@ -240,7 +240,7 @@ export default class ParticularOnlineContent extends React.Component {
           xAxisIndex: [0, 1],
           type: "slider",
           top: "85%",
-          start: 0,
+          start: 70,
           end: 100
         }
       ],
@@ -422,30 +422,43 @@ export default class ParticularOnlineContent extends React.Component {
     if (!nextState.currUrl || !nextState.currUrl[nextState.curType]) {
       return;
     }
-    let now = parseInt(new Date().getTime() / 1000);
-    let start;
-    let day = 24 * 60 * 60;
+    let timeType;
     switch (nextState.timeIndex) {
       case 0:
-        start = now - 5 * 60 * 1000;
+        timeType = "1m";
         break;
       case 1:
-        start = now - 6 * 60 * 60 * 1000;
+        timeType = "5m";
         break;
       case 2:
-        start = now - day * 1 * 1000;
+        timeType = "15m";
         break;
       case 3:
-        start = now - day * 7 * 1000;
+        timeType = "30m";
         break;
       case 4:
-        start = now - day * 30 * 1000;
+        timeType = "1h";
+        break;
+      case 5:
+        timeType = "2h";
+        break;
+      case 6:
+        timeType = "4h";
+        break;
+      case 7:
+        timeType = "6h";
+        break;
+      case 8:
+        timeType = "1d";
+        break;
+      case 9:
+        timeType = "1w";
         break;
     }
-    start = start <= 0 ? 0 : start;
-    start = start.length < 10 ? 0 : start;
     getData(
-      `${PORTOCAL}/${nextState.currUrl[nextState.curType].k_line_data_url}`
+      `${PORTOCAL}/${nextState.currUrl[nextState.curType].k_line_data_url}/${
+        timeType
+      }/10`
     )
       .then(data => {
         if (data.code === 4000) {
