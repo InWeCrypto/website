@@ -523,31 +523,61 @@ export default class ParticularOnlineContent extends React.Component {
                 onClick={this.timeClick.bind(this, 0)}
                 className={this.setTimeClass(0)}
               >
-                5m
+                1m
               </span>
               <span
                 onClick={this.timeClick.bind(this, 1)}
                 className={this.setTimeClass(1)}
               >
-                6h
+                5m
               </span>
               <span
                 onClick={this.timeClick.bind(this, 2)}
                 className={this.setTimeClass(2)}
               >
-                1d
+                15m
               </span>
               <span
                 onClick={this.timeClick.bind(this, 3)}
                 className={this.setTimeClass(3)}
               >
-                7d
+                30m
               </span>
               <span
                 onClick={this.timeClick.bind(this, 4)}
                 className={this.setTimeClass(4)}
               >
-                30d
+                1h
+              </span>
+              <span
+                onClick={this.timeClick.bind(this, 5)}
+                className={this.setTimeClass(5)}
+              >
+                2h
+              </span>
+              <span
+                onClick={this.timeClick.bind(this, 6)}
+                className={this.setTimeClass(6)}
+              >
+                4h
+              </span>
+              <span
+                onClick={this.timeClick.bind(this, 7)}
+                className={this.setTimeClass(7)}
+              >
+                6h
+              </span>
+              <span
+                onClick={this.timeClick.bind(this, 8)}
+                className={this.setTimeClass(8)}
+              >
+                1d
+              </span>
+              <span
+                onClick={this.timeClick.bind(this, 9)}
+                className={this.setTimeClass(9)}
+              >
+                1w
               </span>
             </div>
           )}
