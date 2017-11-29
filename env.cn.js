@@ -1,1 +1,1 @@
-export const PORTOCAL = "https://dev.inwecrypto.com";
+export const PORTOCAL = "https://china.inwecrypto.com";
