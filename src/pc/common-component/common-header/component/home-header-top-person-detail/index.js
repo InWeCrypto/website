@@ -1,25 +1,20 @@
-import React from 'react'
-import './index.less'
-import home_top_twitter from '../../../../lib/app/img/home_top_twitter.png'
-import home_top_ins from '../../../../lib/app/img/home_top_ins.png'
-import home_top_mail from '../../../../lib/app/img/home_top_mail.png'
-import home_top_share from '../../../../lib/app/img/home_top_share.png'
-
+import React from "react";
+import "./index.less";
+import home_top_ins from "../../../../lib/app/img/contact_telegram.png";
+import home_top_mail from "../../../../lib/app/img/contact_mail.png";
 
 export default class HomeHeaderTopPersonDetail extends React.Component {
   render() {
     return (
       <div className="pc-home-header-top-person-detail">
-        <a href="#" className="detail-icon"><img src={home_top_twitter}/></a>
-        <span className="split-line"></span>
-        <a href="#" className="detail-icon"><img src={home_top_ins}/></a>
-        <span className="split-line"></span>
-        <a href="#" className="detail-icon"><img src={home_top_mail}/></a>
-        <span className="split-line"></span>
-        <a href="#" className="detail-icon"><img src={home_top_share}/></a>
+        <a href="https://t.me/inwecrypto" className="detail-icon">
+          <img src={home_top_ins} />
+        </a>
+        <span className="split-line" />
+        <a href="mailto:support@inwecrypto.com" className="detail-icon">
+          <img src={home_top_mail} />
+        </a>
       </div>
-    )
+    );
   }
 }
-
-

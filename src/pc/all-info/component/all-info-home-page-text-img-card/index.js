@@ -24,7 +24,7 @@ export default class AllInfoHomePageTextImgCard extends React.Component {
           <img className="pic" src={link} />
           <div className="content">
             <h2>{title}</h2>
-            <div ref="imgText" />
+            <div className="img-card-content">{content}</div>
             <AllInfoDetail
               className="add-detail"
               img_col={img_col}
@@ -38,9 +38,5 @@ export default class AllInfoHomePageTextImgCard extends React.Component {
         </a>
       </div>
     );
-  }
-  componentDidMount() {
-    let p = this.refs.imgText;
-    $(p).html(this.props.content);
   }
 }

@@ -5,6 +5,8 @@ import ParticularFundMain from "./component/particular-fund-main/index";
 import ParticularSideBar from "../common-component/particular-sidebar/index";
 import { getData } from "../lib/app/js/app";
 import { PORTOCAL } from "../lib/app/js/env";
+import pace from "../lib/app/js/pace/pace.js";
+import "../lib/app/less/pace.less";
 
 import "./index.less";
 let search = decodeURIComponent(window.location.search);
@@ -33,6 +35,7 @@ export default class ParticularFund extends React.Component {
   }
 
   async componentDidMount() {
+    pace.start();
     let data = await getData(`${PORTOCAL}/project/${projectId}`);
     this.setState({
       theProject: data

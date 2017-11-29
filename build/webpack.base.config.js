@@ -23,7 +23,8 @@ var webpackConfig = {
   resolve: {
     alias: {
       src: path.resolve(__dirname, "../src/"),
-      app: path.resolve(__dirname, "../src/lib/app/")
+      app: path.resolve(__dirname, "../src/lib/app/"),
+      pace: path.resolve(__dirname, "../src/pc/lib/app/js/pace/")
     }
   },
   module: {
@@ -35,25 +36,25 @@ var webpackConfig = {
           loader: "underscore-template-loader"
         }
       },
+      // {
+      //   test: /\.css$/,
+      //   use: ExtractTextPlugin.extract({
+      //     fallback: "style-loader",
+      //     use: [
+      //       {
+      //         loader: "css-loader",
+      //         options: {
+      //           minimize: process.env.NODE_ENV === "production",
+      //           importLoaders: 1
+      //         }
+      //       },
+      //       "postcss-loader"
+      //     ]
+      //   })
+      // },
       {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [
-            {
-              loader: "css-loader",
-              options: {
-                minimize: process.env.NODE_ENV === "production",
-                importLoaders: 1
-              }
-            },
-            "postcss-loader"
-          ]
-        })
-      },
-      {
-        test: /\.less$/,
-        use: ["style-loader", "css-loader", "less-loader"]
+        test: /\.(css|less)$/,
+        use: ["style-loader", "css-loader", "postcss-loader", "less-loader"]
       },
       {
         test: /\.js$/,

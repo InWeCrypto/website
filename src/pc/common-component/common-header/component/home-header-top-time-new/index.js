@@ -23,30 +23,32 @@ export default class HomeHeaderTopTimeNew extends React.Component {
       this.setState({
         info: arr
       });
+      console.log(this.state.info);
     });
-    // console.log(this.state.info);
   }
   componentDidMount() {
     let $ul = $(".new-content");
     var timer = null;
     timer = setInterval(function() {
       scrollList($ul);
-    }, 1000);
+    }, 2000);
 
     function scrollList(obj) {
       var scrollHeight = $(".new-content li:first").height();
-      $ul.stop().animate({
-        marginTop: -scrollHeight
-      },
-      600,
-      function() {
-        $ul
-          .css({
-            marginTop: 0
-          })
-          .find("li:first")
-          .appendTo($ul);
-      });
+      $ul.stop().animate(
+        {
+          marginTop: -scrollHeight
+        },
+        1000,
+        function() {
+          $ul
+            .css({
+              marginTop: 0
+            })
+            .find("li:first")
+            .appendTo($ul);
+        }
+      );
     }
   }
 
@@ -65,10 +67,10 @@ export default class HomeHeaderTopTimeNew extends React.Component {
         <div ref="box" className="new-content-box">
           <ul ref="list" className="new-content">
             {info &&
-              info.map(item => {
+              info.map((item, index) => {
                 return (
-                  <li className="new-content-text" key={item.id.toString()}>
-                    {item.symbol} 实时价格 ${item.price_usd}
+                  <li className="new-content-text" key={index}>
+                    {item.symbol} 实时价格 ${item.price}
                   </li>
                 );
               })}

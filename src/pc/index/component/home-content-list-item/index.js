@@ -65,7 +65,8 @@ export default class HomeContentListItem extends React.Component {
       descType,
       url,
       downloads,
-      carousels
+      carousels,
+      videos
     } = this.props;
     let settings = {
       dots: false,
@@ -84,8 +85,9 @@ export default class HomeContentListItem extends React.Component {
     }
     return (
       <div
-        onMouseOver={this.mouseoverHandler}
-        onMouseOut={this.mouseoutHandler}
+        // 禁止project卡片旋转
+        // onMouseOver={this.mouseoverHandler}
+        // onMouseOut={this.mouseoutHandler}
         ref="item"
         className="pc-home-content-list-item"
         data-id={id}
@@ -97,51 +99,83 @@ export default class HomeContentListItem extends React.Component {
         }}
       >
         {carousels && (
-          <a href={downloads ? downloads[0].url : link}>
-            <div className="project-slide">
-              <Slider {...settings}>
-                {carousels.map(item => {
-                  return (
-                    <div key={item.id}>
-                      <img className="slide-page" src={item.img} />;
-                      <div className="slideControl">{item.title}</div>;
-                    </div>
-                  );
-                })}
-              </Slider>
-            </div>
-          </a>
+          //  <a href={downloads ? downloads[0].url : link}>
+          <div className="project-slide">
+            <Slider {...settings}>
+              {carousels.map(item => {
+                return (
+                  <div key={item.id}>
+                    <a className="item-link" href={item.url}>
+                      <img className="slide-page" src={item.img} />
+                    </a>
+                    <div className="slideControl">{item.title}</div>
+                  </div>
+                );
+              })}
+            </Slider>
+          </div>
+          //  </a>
         )}
-        {!carousels && (
-          <a href={downloads ? downloads[0].url : link}>
-            <div className="list-item-content">
-              {src && (
-                <div
-                  className="content-img"
-                  style={{
-                    width: `${this.state.width / 2}px`,
-                    height: `${this.state.height / 2}px`
-                  }}
-                >
-                  <img src={src} />
+        {videos && (
+          <div className="project-slide project-slide-video">
+            <Slider {...settings} arrows={false}>
+              {/* {carousels.map(item => {
+                return ( */}
+              <div>
+                {/* key={item.id} */}
+                {/* item.url */}
+                <a className="item-link" href="">
+                  {/* {item.img} */}
+                  <img
+                    className="slide-page"
+                    // 测试数据，有数据后将上下所有注释去除即可
+                    src="http://whalewallet.oss-cn-hongkong.aliyuncs.com/ads/banner2.png"
+                  />
+                </a>
+                <div className="slideControl">
+                  {/* {item.title} */}
+                  视频
                 </div>
-              )}
-              <div className="content-text">
-                {score && <div className="item-score">{score}</div>}
-                <h2>{name}</h2>
-                <p>{Text[descType]}</p>
-                {downloads && <button className="downloadBtn">DOWNLOAD</button>}
               </div>
-            </div>
-            <HomeContentListItemBack
+              {/* ); */}
+              {/* })} */}
+            </Slider>
+          </div>
+        )}
+        {!carousels &&
+          !videos && (
+            <a href={downloads ? downloads[0].url : link}>
+              <div className="list-item-content">
+                {src && (
+                  <div
+                    className="content-img"
+                    style={{
+                      width: `${this.state.width / 2}px`,
+                      height: `${this.state.height / 2}px`
+                    }}
+                  >
+                    <img src={src} />
+                  </div>
+                )}
+                <div className="content-text">
+                  {/* {score && <div className="item-score">{score}</div>} */}
+                  <h2>{name}</h2>
+                  <p>{Text[descType]}</p>
+                  {downloads && (
+                    <button className="downloadBtn">DOWNLOAD</button>
+                  )}
+                </div>
+              </div>
+              {/* 翻页后的内容，已废弃 */}
+              {/* <HomeContentListItemBack
               background={background}
               url={url}
               score={score}
               name={name}
               backData={this.state.backData}
-            />
-          </a>
-        )}
+            /> */}
+            </a>
+          )}
       </div>
     );
   }

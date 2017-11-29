@@ -8,7 +8,7 @@ export default class ParticularProjectIntroduce extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      titleArr: props.data ? props.data : null,
+      titleArr: props.data ? props.data : [],
       curIndex: 0
     };
   }
@@ -31,9 +31,10 @@ export default class ParticularProjectIntroduce extends React.Component {
         ? "introduce-title introduce-title-active"
         : "introduce-title";
     };
-    let iframeUrl = this.state.titleArr
-      ? `${PORTOCAL}/article/${this.state.titleArr[this.state.curIndex].id}`
-      : "";
+    let iframeUrl =
+      this.state.titleArr.length > 0
+        ? `${PORTOCAL}/article/${this.state.titleArr[this.state.curIndex].id}`
+        : "";
     return (
       <div className="pc-particular-project-introduce">
         <ul className="introduce-title-list">
@@ -50,7 +51,7 @@ export default class ParticularProjectIntroduce extends React.Component {
               );
             })}
         </ul>
-        <iframe src={iframeUrl} className="introduce-text" />
+        {iframeUrl && <iframe src={iframeUrl} className="introduce-text" />}
       </div>
     );
   }

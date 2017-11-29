@@ -42,20 +42,18 @@ export default class HomeHeaderNavList extends React.Component {
         >
           Ico评测
         </a>
-        <a
+        {/* <a
           className={cls("nav-item", classPrice)}
           onClick={e => this.onClick(e)}
-          href="../../../../price-market/"
         >
           行情
-        </a>
-        <a
+        </a> */}
+        {/* <a
           className={cls("nav-item", classBrowser)}
           onClick={e => this.onClick(e)}
-          href="../../particular-online/"
         >
           浏览器
-        </a>
+        </a> */}
         <a
           className={cls("nav-item", classInfo)}
           onClick={e => this.onClick(e)}
@@ -67,10 +65,10 @@ export default class HomeHeaderNavList extends React.Component {
           className="nav-item nav-item-language"
           onClick={this.changeLanuage}
         >
-          <p>
+          <p style={{ color: "#8b8787" }}>
             语言<span className="dropdown-icon" />
           </p>
-          <div
+          {/* <div
             className="nav-item-language-dropdown"
             style={{ display: show ? "block" : "none" }}
           >
@@ -78,7 +76,7 @@ export default class HomeHeaderNavList extends React.Component {
             <span className="item">中文</span>
             <span className="item item-active">英文</span>
             <span className="item">日文</span>
-          </div>
+          </div> */}
         </div>
       </div>
     );

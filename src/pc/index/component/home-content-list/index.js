@@ -18,6 +18,10 @@ export default class HomeContentList extends React.Component {
       newData: []
     };
   }
+  // componentDidMount() {
+  //   let data = this.props.project;
+  //   console.log(data);
+  // }
   componentWillUpdate(nextProps, nextState) {
     if (this.state.newData !== nextState.newData) {
       this.setState({
@@ -27,9 +31,19 @@ export default class HomeContentList extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if (!nextProps.project) return;
     this.setState({
       listArr: nextProps.project.data
     });
+    let data = nextProps.project.data;
+    let projectD = [];
+    data.map(item => {
+      if (item.type >= 5) {
+        projectD.push({ id: item.id, type: item.type });
+      }
+    });
+    sessionStorage.setItem("project", JSON.stringify(projectD));
+    console.log(projectD);
   }
   componentDidUpdate() {
     let that = this;
@@ -95,7 +109,6 @@ export default class HomeContentList extends React.Component {
 
   render() {
     if (this.props.project) {
-      //console.log(this.props.project);
       // }
       // if (this.state.listArr && this.state.listArr.length > 0) {
       let allData = sortProject(this.props.project.data);
@@ -128,6 +141,7 @@ export default class HomeContentList extends React.Component {
                             score={item[0].score}
                             downloads={item[0].downloads}
                             carousels={item[0].carousels}
+                            videos={item[0].videos}
                           />
                         );
                       })}
@@ -161,6 +175,7 @@ export default class HomeContentList extends React.Component {
                             score={item[0].score}
                             downloads={item[0].downloads}
                             carousels={item[0].carousels}
+                            videos={item[0].videos}
                             descType={item[0].type}
                           />
                         );

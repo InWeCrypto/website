@@ -26,14 +26,15 @@ import "./index.less";
 // );
 
 export default class HomeContentListItemBack extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      backData: null
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     backData: null
+  //   };
+  // }
   render() {
     let { background, url, collection, descType, backData } = this.props;
+
     return (
       <div
         className="pc-home-content-list-item-back"
@@ -48,10 +49,38 @@ export default class HomeContentListItemBack extends React.Component {
         </div>
         <div className="back-content">
           <div>
-            <p>当前价格: {backData && backData.price_usd} </p>
-            {/* <p>24H最高价格: {backData && backData["24h_volume_usd"]}</p>
-            <p>最低价格: {backData && backData.available_supply}</p> */}
-            <p>24H涨幅: {backData && backData.percent_change_24h}</p>
+            <p>
+              当前价格:
+              {!backData
+                ? "NaN"
+                : backData instanceof Array && backData.length <= 0
+                  ? "NaN"
+                  : backData.price}
+            </p>
+            <p>
+              24H最高价格:{" "}
+              {!backData
+                ? "NaN"
+                : backData instanceof Array && backData.length <= 0
+                  ? "NaN"
+                  : backData["24h_max_price"]}{" "}
+            </p>
+            <p>
+              24H最低价格:{" "}
+              {!backData
+                ? "NaN"
+                : backData instanceof Array && backData.length <= 0
+                  ? "NaN"
+                  : backData["24h_min_price"]}{" "}
+            </p>
+            <p>
+              24H涨幅:{" "}
+              {!backData
+                ? "NaN"
+                : backData instanceof Array && backData.length <= 0
+                  ? "NaN"
+                  : backData["24h_change"]}
+            </p>
           </div>
         </div>
       </div>

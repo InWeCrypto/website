@@ -27,7 +27,7 @@ export default class AllInfoTextImg extends React.Component {
                 id={data.id}
                 link={data.img}
                 title={data.title}
-                content={data.content}
+                content={data.desc}
                 date={data.updated_at}
                 read={data.click_rate}
                 reply={data.comments_count}

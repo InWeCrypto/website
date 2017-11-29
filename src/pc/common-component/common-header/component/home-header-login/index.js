@@ -47,11 +47,9 @@ export default class HomeHeaderLogin extends React.Component {
         <div>
           {!this.state.userInfo ? (
             <span className="person-login">
-              <span onClick={this.changeSignState.bind(this, true, "signup")}>
-                注册
-              </span>/<span
-                onClick={this.changeSignState.bind(this, true, "signin")}
-              >
+              {/* onClick={this.changeSignState.bind(this, true, "signup")} */}
+              <span>注册</span>/<span>
+                {/* onClick={this.changeSignState.bind(this, true, "signin")} */}
                 登录
               </span>
             </span>
