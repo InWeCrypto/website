@@ -5,6 +5,7 @@ MAINTAINER inwecrypto <support@inwecrypto.com>
 
 COPY ./ /tmp/build
 COPY ./env.cn.js /tmp/build/src/pc/lib/app/js/env.js
+COPY ./env.cn.js /tmp/build/src/mobile/src/config/config.js
 
 WORKDIR /tmp/build/pc
 RUN yarn && yarn run build
