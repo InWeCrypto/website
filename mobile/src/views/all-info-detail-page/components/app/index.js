@@ -27,7 +27,6 @@ class AppComponent extends Component {
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.data && nextProps.data != this.props.data) {
 			const cont = this.refs.content;
-			console.log(this.refs);
 			cont.innerHTML = nextProps.data.content;
 		}
 	}
