@@ -49,7 +49,13 @@ class AppComponent extends Component {
 		return idx == this.props.typeIndex ? "nav-btn cur" : "nav-btn";
 	}
 	setUrl(url) {
-		return url.substring(3, url.length);
+		if (!url || url.length == 0) {
+			return "javascript:void(0)";
+		}
+		if (url.indexOf("../") != -1) {
+			return url.substring(3, url.length);
+		}
+		return url;
 	}
 	render() {
 		const state = this.state;
