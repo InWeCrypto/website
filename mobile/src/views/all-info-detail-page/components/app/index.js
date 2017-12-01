@@ -25,7 +25,6 @@ class AppComponent extends Component {
 		document.title = this.state.title;
 	}
 	componentWillReceiveProps(nextProps) {
-		//console.log(nextProps.data.content);
 		if (nextProps.data && nextProps.data != this.props.data) {
 			const cont = this.refs.content;
 			console.log(this.refs);
