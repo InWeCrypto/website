@@ -37,12 +37,16 @@ class NewsFlash extends Component {
 						{newsList &&
 							newsList.map((item, index) => {
 								return (
-									<div key={index} className="newsflash_item">
+									<a
+										href={item.url}
+										key={index}
+										className="newsflash_item"
+									>
 										<span className="circle" />
 										<span className="txt">
 											{item.title}
 										</span>
-									</div>
+									</a>
 								);
 							})}
 					</div>

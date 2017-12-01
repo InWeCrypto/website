@@ -39,6 +39,13 @@ export default class News extends Component {
 			this.move();
 		}, 3000);
 	}
+	setUrl(url) {
+		if (url && url.length > 0 && url.indexOf("../") != -1) {
+			return url.substring(4, url.length);
+		} else {
+			return url;
+		}
+	}
 	render() {
 		const settings = this.state.setting;
 		const news = this.props.newsList;
@@ -53,7 +60,7 @@ export default class News extends Component {
 									<a
 										key={index}
 										className="a"
-										href={item.url}
+										href={this.setUrl(item.url)}
 									>
 										<span className="circle" />
 										<span className="txt">
