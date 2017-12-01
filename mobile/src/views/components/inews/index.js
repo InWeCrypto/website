@@ -20,6 +20,16 @@ export default class Inews extends Component {
 			showImgTxtAll: true
 		});
 	}
+	setUrl(url, id) {
+		if (!url || url.length == 0) {
+			return "./all-info-detail-page/#/?id=" + id;
+		}
+		if (url.indexOf("../") != -1) {
+			return url.substring(4, url.length);
+		} else {
+			return url;
+		}
+	}
 	render() {
 		let { videoList, imgTxtList, inewsIndex, handClick } = this.props;
 		const curClass = idx => {
@@ -64,7 +74,10 @@ export default class Inews extends Component {
 										}
 										return (
 											<a
-												href={item.url}
+												href={this.setUrl(
+													item.url,
+													item.id
+												)}
 												className="inews-item"
 												key={index}
 											>
@@ -105,7 +118,10 @@ export default class Inews extends Component {
 										}
 										return (
 											<a
-												href={item.url}
+												href={this.setUrl(
+													item.url,
+													item.id
+												)}
 												className="inews-item"
 												key={index}
 											>
