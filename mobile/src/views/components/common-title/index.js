@@ -5,7 +5,6 @@ import Search from "../common-search/";
 export default class CommonTitle extends Component {
 	constructor(props) {
 		super(props);
-		console.log(props.isChild);
 		this.state = {
 			title: props.title ? props.title : "",
 			isStation: props.isStation != undefined ? props.isStation : true,
@@ -14,7 +13,8 @@ export default class CommonTitle extends Component {
 			showSearch: false,
 			showMennuBtn:
 				props.showReturn != undefined ? props.showReturn : true,
-			isChild: props.isChild ? props.isChild : false
+			isChild: props.isChild ? props.isChild : false,
+			hasShare: props.hasShare ? props.hasShare : false
 		};
 		this.closeSearch = this.closeSearch.bind(this);
 		this.openSearch = this.openSearch.bind(this);
@@ -59,7 +59,6 @@ export default class CommonTitle extends Component {
 	}
 	render() {
 		const state = this.state;
-		console.log(state.isChild);
 		return (
 			<div className="common-titlebox">
 				{state.isStation && <div className="common-titlebg" />}
@@ -71,11 +70,15 @@ export default class CommonTitle extends Component {
 						{/* <span
 							className="search-btn"
 							onClick={this.openSearch}
-						/> */}
-						<span
-							className="menu-btn"
-							onClick={this.toggleMenu.bind(this)}
-						/>
+                        /> */}
+						{!state.hasShare && (
+							<span
+								className="menu-btn"
+								onClick={this.toggleMenu.bind(this)}
+							/>
+						)}
+						{state.hasShare && <span className="share-btn" />}
+
 						{state.showMore && (
 							<div
 								className="menu-list"

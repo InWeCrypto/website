@@ -15,9 +15,9 @@ import Detail from "../detail/";
 class AppComponent extends Component {
 	constructor(props) {
 		super(props);
-		console.log(props);
 		this.state = {
-			title: "ICO评测"
+			title: "ICO评测",
+			isDetail: false
 		};
 	}
 	componentDidMount() {
@@ -28,7 +28,12 @@ class AppComponent extends Component {
 		let { data, match } = this.props;
 		return (
 			<div>
-				<CommonTitle isChild={true} title={state.title} />
+				<CommonTitle
+					showReturn={true}
+					isChild={true}
+					title={state.title}
+					hasShare={state.isDetail}
+				/>
 				<Switch>
 					<Route exact path="/" component={List} />
 					<Route path="/detail" component={Detail} />
