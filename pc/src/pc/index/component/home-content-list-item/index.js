@@ -45,10 +45,12 @@ export default class HomeContentListItem extends React.Component {
     });
   };
   async componentDidMount() {
-    let d = await getData(`${PORTOCAL}/${this.props.url}`);
-    this.setState({
-      backData: d.data
-    });
+    if (this.props.url) {
+      let d = await getData(`${PORTOCAL}/${this.props.url}`);
+      this.setState({
+        backData: d.data
+      });
+    }
   }
   render() {
     let {
