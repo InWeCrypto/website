@@ -46,7 +46,14 @@ class AppComponent extends Component {
 						title={state.title}
 					/>
 					{!data ? (
-						"暂无数据"
+						<div
+							style={{
+								textAlign: "center",
+								padding: ".5rem"
+							}}
+						>
+							暂无数据
+						</div>
 					) : (
 						<div className="detail-container">
 							<div className="detail-title">{data.title}</div>

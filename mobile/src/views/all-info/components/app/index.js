@@ -20,6 +20,7 @@ class AppComponent extends Component {
 	}
 	async componentWillMount() {
 		Pace.start();
+
 		let d = await this.props.getAllInfoAction();
 	}
 
@@ -46,6 +47,9 @@ class AppComponent extends Component {
 
 	setCur(idx) {
 		return idx == this.props.typeIndex ? "nav-btn cur" : "nav-btn";
+	}
+	setUrl(url) {
+		return url.substring(3, url.length);
 	}
 	render() {
 		const state = this.state;
@@ -94,7 +98,7 @@ class AppComponent extends Component {
 							showData.map((item, index) => {
 								return (
 									<a
-										href={item.url}
+										href={this.setUrl(item.url)}
 										className="group"
 										key={index}
 									>

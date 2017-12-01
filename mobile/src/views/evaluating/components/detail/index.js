@@ -180,7 +180,7 @@ class Detail extends Component {
 										data.ico_assess_structure.length > 0 &&
 										data.ico_assess_structure.map(item => {
 											return (
-												<p
+												<div
 													className="strcture-box"
 													key={item.id}
 												>
@@ -192,7 +192,7 @@ class Detail extends Component {
 															item.desc
 														}
 													</div>
-												</p>
+												</div>
 											);
 										})}
 								</div>
