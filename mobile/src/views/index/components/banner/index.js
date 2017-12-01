@@ -17,7 +17,13 @@ export default class Banner extends Component {
 			}
 		};
 	}
-
+	setUrl(url) {
+		if (url && url.length > 0 && url.indexOf("../") != -1) {
+			return url.substring(4, url.length);
+		} else {
+			return url;
+		}
+	}
 	render() {
 		const settings = this.state.setting;
 		const banner = this.props.bannerList;
@@ -29,7 +35,7 @@ export default class Banner extends Component {
 						banner.map((item, index) => {
 							return (
 								<div key={index}>
-									<a href={item.url}>
+									<a href={this.setUrl(item.url)}>
 										<img src={item.img} />
 									</a>
 								</div>
