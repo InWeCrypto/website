@@ -68,10 +68,10 @@ export default class CommonTitle extends Component {
 				<div className="common-title">
 					<span className="title-txt">{state.title}</span>
 					<div className="menu-box">
-						<span
+						{/* <span
 							className="search-btn"
 							onClick={this.openSearch}
-						/>
+						/> */}
 						<span
 							className="menu-btn"
 							onClick={this.toggleMenu.bind(this)}
