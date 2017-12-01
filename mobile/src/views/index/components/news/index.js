@@ -39,8 +39,11 @@ export default class News extends Component {
 			this.move();
 		}, 3000);
 	}
-	setUrl(url) {
-		if (url && url.length > 0 && url.indexOf("../") != -1) {
+	setUrl(url, id) {
+		if (!url || url.length == 0) {
+			return "./all-info-detail-page/#/?id=" + id;
+		}
+		if (url.indexOf("../") != -1) {
 			return url.substring(4, url.length);
 		} else {
 			return url;
@@ -60,7 +63,7 @@ export default class News extends Component {
 									<a
 										key={index}
 										className="a"
-										href={this.setUrl(item.url)}
+										href={this.setUrl(item.url, item.id)}
 									>
 										<span className="circle" />
 										<span className="txt">
