@@ -48,9 +48,9 @@ class AppComponent extends Component {
 	setCur(idx) {
 		return idx == this.props.typeIndex ? "nav-btn cur" : "nav-btn";
 	}
-	setUrl(url) {
+	setUrl(url, id) {
 		if (!url || url.length == 0) {
-			return "javascript:void(0)";
+			return "../all-info-detail-page/#/?id=" + id;
 		}
 		if (url.indexOf("../") != -1) {
 			return url.substring(3, url.length);
@@ -104,7 +104,7 @@ class AppComponent extends Component {
 							showData.map((item, index) => {
 								return (
 									<a
-										href={this.setUrl(item.url)}
+										href={this.setUrl(item.url, item.id)}
 										className="group"
 										key={index}
 									>
