@@ -43,7 +43,6 @@ export default class HomeContentList extends React.Component {
       }
     });
     sessionStorage.setItem("project", JSON.stringify(projectD));
-    console.log(projectD);
   }
   componentDidUpdate() {
     let that = this;

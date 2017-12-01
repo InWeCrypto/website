@@ -18,12 +18,13 @@ export default class HomeHeaderTopTimeNew extends React.Component {
     if (nextProps.priceData === this.props.priceData) return;
     let arr = [];
     nextProps.priceData.data.map(async item => {
-      let d = await getData(`${PORTOCAL}/${item.url}`);
-      arr.push(d.data);
-      this.setState({
-        info: arr
-      });
-      console.log(this.state.info);
+      //   console.log(item);
+      //   let d = await getData(`${PORTOCAL}/${item.url}`);
+      //   arr.push(d.data);
+      //   this.setState({
+      //     info: arr
+      //   });
+      //   console.log(this.state.info);
     });
   }
   componentDidMount() {
