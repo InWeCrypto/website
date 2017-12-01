@@ -22,7 +22,7 @@ export default class Inews extends Component {
 	}
 	setUrl(url, id) {
 		if (!url || url.length == 0) {
-			return "./all-info-detail-page/#/?id=" + id;
+			return "../all-info-detail-page/#/?id=" + id;
 		}
 		if (url.indexOf("../") != -1) {
 			return url.substring(4, url.length);
