@@ -1,0 +1,36 @@
+.list-box {
+  box-sizing: border-box;
+  padding: 0 140px;
+  background: #2eafea;
+  .list-item {
+    padding: 35px 0;
+    border-bottom: 1px solid #fff;
+    display: block;
+  }
+  .list-item:nth-last-child(1) {
+    border-bottom: 0;
+  }
+  .list-img {
+    width: 235px;
+    height: 134px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+  }
+  .list-info {
+    display: inline-block;
+    vertical-align: top;
+    width: 565px;
+    color: #fff;
+    text-align: left;
+    .list-title {
+      font-size: 18px;
+    }
+    .list-t {
+      margin-top: 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}

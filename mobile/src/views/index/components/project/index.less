@@ -1,0 +1,159 @@
+@import "../../../lib/css/base.less";
+.project {
+	background: @white;
+	.project-title {
+		padding-top: 10px;
+		font-size: 0.14rem;
+		text-align: center;
+		color: @grey;
+		.line {
+			vertical-align: middle;
+			display: inline-block;
+			width: 0.5rem;
+			height: 0.01rem;
+			background: @grey2;
+		}
+		.txt {
+			vertical-align: middle;
+			margin: 0.1rem;
+		}
+	}
+	.project-box {
+		box-sizing: border-box;
+		padding: 0.1rem 5px;
+		display: flex;
+		flex-wrap: wrap;
+		.item {
+			width: 45vw;
+			height: 45vw;
+			display: flex;
+			overflow: hidden;
+			flex-wrap: wrap;
+			margin-bottom: 3px;
+			.big {
+				width: 100% !important;
+				height: 100% !important;
+				overflow: hidden;
+			}
+			.little {
+				width: 21.5vw;
+				height: 21.5vw;
+				overflow: hidden;
+				margin-bottom: 3px;
+				.img {
+					height: auto;
+					max-width: 45%;
+				}
+			}
+			.little:nth-child(2n + 1) {
+				margin-right: 3px;
+			}
+			.a {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				color: @white;
+				text-align: center;
+				position: relative;
+				.lefttop {
+					position: absolute;
+					left: 0.05rem;
+					top: 0.05rem;
+				}
+				.righttop {
+					position: absolute;
+					right: 0.05rem;
+					top: 0.05rem;
+				}
+			}
+			.img {
+				height: 25vw;
+			}
+			.en-name {
+				font-size: 0.14rem;
+			}
+		}
+		.item.item1 {
+			width: 93vw;
+			height: 93vw;
+			.img {
+				height: 45vw;
+			}
+		}
+		.item.item2 {
+			width: 93vw;
+			height: 45vw;
+			.img {
+				height: 25vw;
+			}
+		}
+		.item:nth-child(2n + 1) {
+			margin-right: 3px;
+		}
+	}
+	.slider {
+		position: relative;
+		color: #fff;
+		.slick-prev,
+		.slick-next {
+			top: 1.4rem;
+			z-index: 10;
+		}
+		.slick-prev {
+			left: 0.05rem;
+		}
+		.slick-next {
+			right: 0.05rem;
+		}
+		.slick-arrow:before {
+			content: "";
+			display: block;
+			width: 0.18rem;
+			height: 0.18rem;
+		}
+		.slick-prev:before {
+			background: url("../../../lib/img/arrow_left_small.png")no-repeat center
+				center;
+		}
+		.slick-next:before {
+			background: url("../../../lib/img/arrow_right_small.png")no-repeat center
+				center;
+		}
+	}
+	.item-link {
+		display: inline-block;
+		height: auto;
+		img {
+			max-width: 100%;
+		}
+	}
+	.slideControl {
+		text-align: center;
+		line-height: 0.3rem;
+	}
+	.slick-track {
+		height: 100%;
+	}
+	.slider-video {
+		height: 100%;
+		img {
+			height: 100%;
+		}
+		.slick-slider,
+		.slick-list {
+			height: 100%;
+		}
+		.item-link {
+			height: 90%;
+		}
+		.slick-prev:before {
+			background: none;
+		}
+		.slick-next:before {
+			background: none;
+		}
+	}
+}

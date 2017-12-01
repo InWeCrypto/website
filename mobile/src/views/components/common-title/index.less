@@ -1,0 +1,107 @@
+@import "../../lib/css/base.less";
+.common-titlebox {
+	position: relative;
+	z-index: 10;
+	.common-titlebg {
+		height: 0.4rem;
+	}
+}
+.common-title {
+	height: 0.4rem;
+	background: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	color: @black;
+	text-align: center;
+	.title-txt {
+		font-size: 0.16rem;
+		max-width: 70%;
+		display: inline-block;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		vertical-align: middle;
+		height: 100%;
+		line-height: 0.4rem;
+	}
+	.return {
+		width: 0.35rem;
+		height: 100%;
+		line-height: 0.38rem;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		.returnbtn {
+			background: url("../../lib/img/returnbtn.png") left top no-repeat;
+			display: inline-block;
+			width: 0.21rem;
+			height: 0.17rem;
+			background-size: 100%;
+			vertical-align: middle;
+		}
+	}
+	.menu-box {
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: 100%;
+		line-height: 0.38rem;
+		padding: 0 0.1rem;
+		.search-btn {
+			background: url("../../lib/img/search.png") left top no-repeat;
+			display: inline-block;
+			width: 0.16rem;
+			height: 0.16rem;
+			background-size: 100%;
+			vertical-align: middle;
+			margin-right: 0.1rem;
+		}
+		.menu-btn {
+			background: url("../../lib/img/menubtn.png") left top no-repeat;
+			display: inline-block;
+			width: 0.22rem;
+			height: 0.16rem;
+			background-size: 100%;
+			vertical-align: middle;
+		}
+		.menu-list {
+			position: absolute;
+			right: 0.1rem;
+			top: 0.4rem;
+			background: #f2f2f2;
+			width: 0.64rem;
+			z-index: 1;
+			box-sizing: border-box;
+			padding: 0 0.03rem;
+			.menu-item {
+				padding: 0.1rem 0.05rem;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				line-height: 1;
+				color: @black;
+				display: block;
+				border-bottom: 0.01rem solid @grey3;
+			}
+			.menu-item:active {
+				background: @orange1;
+			}
+			.menu-item.cur {
+				//background: @orange1;
+			}
+		}
+		.menu-list:before {
+			content: "";
+			position: absolute;
+			width: 0;
+			height: 0;
+			border-right: 0.06rem solid transparent;
+			border-left: 0.06rem solid transparent;
+			border-bottom: 0.06rem solid #f2f2f2;
+			top: -0.05rem;
+			right: 0.05rem;
+		}
+	}
+}

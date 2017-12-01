@@ -1,0 +1,46 @@
+@import "../../../lib/css/base.less";
+.trade {
+	padding: 0 0.1rem;
+	background: @white;
+	position: relative;
+	color: @black;
+	.trade-title {
+		padding: 0.08rem 0;
+		position: relative;
+	}
+	.trade-data {
+		.item {
+			border-bottom: 0.01rem solid #e6e6e6;
+			color: @black;
+			margin-bottom: 0;
+			.item-line {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.name {
+				color: #a4a4a4;
+			}
+			.td {
+				flex: 1;
+				text-align: left;
+				padding: 0.08rem 0;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			.td1 {
+				flex: 1;
+				text-align: right;
+				padding: 0.08rem 0;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+		}
+		.showbtn {
+			padding: 0.08rem 0;
+			text-align: center;
+		}
+	}
+}
