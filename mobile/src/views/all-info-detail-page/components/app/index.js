@@ -11,8 +11,6 @@ import CommonTitle from "../../../components/common-title/";
 import uncollect from "../../../lib/img/uncollect.png";
 import collected from "../../../lib/img/collected.png";
 
-let locationId = window.location.search.split("?")[1];
-console.log(locationId);
 class AppComponent extends Component {
 	constructor() {
 		super();
@@ -27,10 +25,8 @@ class AppComponent extends Component {
 		document.title = this.state.title;
 	}
 	componentWillReceiveProps(nextProps) {
-		//console.log(nextProps.data.content);
 		if (nextProps.data && nextProps.data != this.props.data) {
 			const cont = this.refs.content;
-			console.log(this.refs);
 			cont.innerHTML = nextProps.data.content;
 		}
 	}
@@ -92,10 +88,11 @@ const mapStateToProps = state => {
 	};
 };
 const mapDispatchToProps = (dispatch, ownProps) => {
+	let query = window.util.getQuery(window.location.href);
 	return {
 		getAllInfoDetailAction: actions.getAllInfoDetailAction(
 			dispatch,
-			locationId
+			query.id
 		)
 	};
 };
